@@ -26,7 +26,7 @@ Koska pelissä voi kiertää veroja on pelaajan mahdollista palkata muita pelaam
 * Palkkaa erikoishenkilöjä (Kirjanpitäjä, Työnjohtaja...)
 * Tallenna peli
 
-** Tekoälyn toiminnot: **
+**Tekoälyn toiminnot:**
 
 * Generoi uusi työtehtävä
 * Satunnainen verotarkastus
