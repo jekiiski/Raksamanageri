@@ -3,16 +3,24 @@ package fi.raksamanageri.logiikka;
 import java.util.ArrayList;
 
 public class Pelaaja {
-    private String nimi;
+    private final String nimi;
     private int rahaMaara;
     private static final int ALKURAHA = 10000;
-    private ArrayList alaiset;
+    private final ArrayList tyonTekijat;
     
     
     public Pelaaja(String nimi) {
-        this.nimi = nimi;
+        if (nimi.isEmpty()) {
+            this.nimi = "Nimetön";
+        } else {
+            this.nimi = nimi;
+        }
         this.rahaMaara = ALKURAHA;
-        this.alaiset = new ArrayList<Tyontekija>();
+        this.tyonTekijat = new ArrayList<Tyontekija>();
+    }
+    
+    public String getNimi() {
+        return this.nimi;
     }
     
     public int paljonkoRahaa() {
@@ -25,10 +33,17 @@ public class Pelaaja {
     }
     
     public void lisaaAlainen(Tyontekija tyontekija) {
-        this.alaiset.add(tyontekija);
+        this.tyonTekijat.add(tyontekija);
+    }
+    public boolean poistaTyontekija(Tyontekija tyontekija) {
+        if (this.tyonTekijat.contains(tyontekija)) {
+            this.tyonTekijat.remove(tyontekija);
+            return true;
+        }
+        return false;
     }
     
     public ArrayList<Tyontekija> annaAlaiset() {
-        return this.alaiset;
+        return this.tyonTekijat;
     }
 }
