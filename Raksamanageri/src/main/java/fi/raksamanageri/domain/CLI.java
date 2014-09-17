@@ -20,15 +20,21 @@ public class CLI {
                 lataaPeli();
                 break;
             } else if (komento.equals("e")) {
-                System.out.print("Anna nimesi: ");
-                String nimi = this.lukija.nextLine();
-                peli = new Peli(nimi);
+                peli = new Peli();
+                valmistelePeli();
                 menu();
                 break;
             } else if (komento.equals("x")) {
                 break;
             }
         }
+    }
+
+    private void valmistelePeli() {
+        this.peli.arvoUusiTyontekija();
+        this.peli.arvoUusiTyomaa();
+        this.peli.arvoUusiTyomaa();
+        this.peli.arvoUusiTyontekija();
     }
 
     private void menu() {
@@ -94,7 +100,7 @@ public class CLI {
                 hallitseTyontekijoita();
                 break;
             case "3":
-                System.out.println("3");
+                erotaTyontekijoita();
                 hallitseTyontekijoita();
                 break;
             case "4":
@@ -107,29 +113,196 @@ public class CLI {
 
     private void tulostaTyontekijat() {
         System.out.println("Työntekijäsi: ");
-        for (int i=1; i<=this.peli.getPelaaja().annaAlaiset().size(); i++) {
-            Tyontekija t = this.peli.getPelaaja().annaAlaiset().get(i-1);
-            System.out.print(i + ". " + t);
-//            if (t.onkoKotimainen()) {
-//                System.out.print("Kotimainen ");
-//            } else {
-//                System.out.print("Ulkomainen ");
-//            }
-//            System.out.println(" työntekijä, palkka : "
-//            + t.getPalkka() + " tyoteho : " + t.getTyoteho());
+        for (int i = 0; i < this.peli.getPelaaja().annaTyontekijat().size(); i++) {
+            Tyontekija t = this.peli.getPelaaja().annaTyontekijat().get(i);
+            System.out.println(i + 1 + ". " + t);
         }
     }
-    
+
     private void palkkaaTyontekijoita() {
         System.out.println("Palkkaa kuka: [x]=ei ketään");
-        for (int i=1; i<=this.peli.getVapaatTyontekijat().size(); i++) {
-            Tyontekija t = this.peli.getVapaatTyontekijat().get(i-1);
-            System.out.println(i + ". " + t);
+        for (int i = 0; i < this.peli.getVapaatTyontekijat().size(); i++) {
+            Tyontekija t = this.peli.getVapaatTyontekijat().get(i);
+            System.out.println(i + 1 + ". " + t);
         }
-        
-        
+        String komento = lukija.nextLine();
+        if (!komento.equals("x")) {
+            int nro;
+            try {
+                nro = Integer.parseInt(komento);
+            } catch (Exception e) {
+                System.out.println("Anna numero tai [x]!");
+                return;
+            }
+            if (nro >= 1 && nro <= this.peli.getVapaatTyontekijat().size()) {
+                this.peli.getPelaaja().lisaaTyontekija(this.peli.getVapaatTyontekijat().get(nro - 1));
+                this.peli.poistaUusiTyontekija(this.peli.getVapaatTyontekijat().get(nro - 1));
+            } else {
+                System.out.println("Ei moista työntekijänumeroa!");
+            }
+        }
+
+    }
+
+    private void erotaTyontekijoita() {
+        System.out.println("Kenet erotetaan? [x]~poistu");
+        for (int i = 0; i < this.peli.getPelaaja().annaTyontekijat().size(); i++) {
+            Tyontekija t = this.peli.getPelaaja().annaTyontekijat().get(i);
+            System.out.println(i + 1 + ". " + t);
+        }
+        String komento = lukija.nextLine();
+        if (!komento.equals("x")) {
+            int nro;
+            try {
+                nro = Integer.parseInt(komento);
+            } catch (Exception e) {
+                System.out.println("Anna numero tai [x]!");
+                return;
+            }
+            if (nro >= 1 && nro <= this.peli.getPelaaja().annaTyontekijat().size()) {
+                this.peli.getPelaaja().poistaTyontekija(this.peli.getPelaaja().annaTyontekijat().get(nro - 1));
+            } else {
+                System.out.println("Ei moista työntekijänumeroa!");
+            }
+        }
+
     }
 
     private void hallitseTyomaita() {
+        System.out.println("\n\nValitse vaihtoehto: ");
+        System.out.println("1. Näytä tyomaasi");
+        System.out.println("2. Lisää uusi työmaa");
+        System.out.println("3. Aseta työntekijä tyomaalle");
+        System.out.println("4. Poista työntekijä tyomaalta");
+        System.out.println("5. Poistu");
+        String komento = this.lukija.nextLine();
+
+        switch (komento) {
+            case "1":
+                tulostaTyomaat();
+                hallitseTyomaita();
+                break;
+            case "2":
+                lisaaTyomaa();
+                hallitseTyontekijoita();
+                break;
+            case "3":
+                asetaTyontekijaTyomaalle();
+                hallitseTyontekijoita();
+                break;
+            case "4":
+                poistaTyontekijaTyomaalta();
+                hallitseTyontekijoita();
+                break;
+            case "5":
+                return;
+            default:
+                hallitseTyomaita();
+                break;
+        }
+    }
+
+    private void tulostaTyomaat() {
+        System.out.println("Työmaasi: ");
+        for (int i = 0; i < this.peli.getPelaaja().annaTyomaat().size(); i++) {
+            Tyomaa t = this.peli.getPelaaja().annaTyomaat().get(i);
+            System.out.println(i + 1 + ". " + t);
+        }
+    }
+
+    private void lisaaTyomaa() {
+        System.out.println("Lisää mikä: [x]=ei ketään");
+        for (int i = 0; i < this.peli.getTyomaat().size(); i++) {
+            Tyomaa t = this.peli.getTyomaat().get(i);
+            System.out.println(i + 1 + ". " + t);
+        }
+        String komento = lukija.nextLine();
+        if (!komento.equals("x")) {
+            int nro;
+            try {
+                nro = Integer.parseInt(komento);
+            } catch (Exception e) {
+                System.out.println("Anna numero tai [x]!");
+                return;
+            }
+            if (nro >= 1 && nro <= this.peli.getTyomaat().size()) {
+                this.peli.getPelaaja().lisääTyomaa(this.peli.getTyomaat().get(nro - 1));
+                this.peli.poistaUusiTyomaa(this.peli.getTyomaat().get(nro - 1));
+            } else {
+                System.out.println("Ei moista työntekijänumeroa!");
+            }
+        }
+    }
+
+    private void asetaTyontekijaTyomaalle() {
+        
+        System.out.println("Ei implementoitu");
+        
+//        int tyontekijaNro = -1;
+//        int tyomaaNro = -1;
+//
+//        System.out.println("Valitse työntekijä: [x]~poistu");
+//        for (int i = 0; i < this.peli.getPelaaja().annaTyontekijat().size(); i++) {
+//            Tyontekija t = this.peli.getPelaaja().annaTyontekijat().get(i);
+//            System.out.println(i + 1 + ". " + t);
+//        }
+//        String komento = lukija.nextLine();
+//        if (!komento.equals("x")) {
+//            try {
+//                tyontekijaNro = Integer.parseInt(komento);
+//            } catch (Exception e) {
+//                System.out.println("Anna numero tai [x]!");
+//                return;
+//            }
+//            if (tyontekijaNro < 1 || tyontekijaNro > this.peli.getVapaatTyontekijat().size()) {
+//                System.out.println("Ei moista työntekijänumeroa!");
+//            }
+//        }
+//
+//        System.out.println("Mille työmaalle sijoitetaan: [x]~poistu");
+//        for (int i = 0; i < this.peli.getPelaaja().annaTyomaat().size(); i++) {
+//            Tyomaa t = this.peli.getPelaaja().annaTyomaat().get(i);
+//            System.out.println(i + 1 + ". " + t);
+//        }
+//        String toinenKomento = lukija.nextLine();
+//        if (!toinenKomento.equals("x")) {
+//            try {
+//                tyomaaNro = Integer.parseInt(toinenKomento);
+//            } catch (Exception e) {
+//                System.out.println("Anna numero tai [x]!");
+//                return;
+//            }
+//            if (tyomaaNro < 1 && tyomaaNro > this.peli.getTyomaat().size()) {
+//                System.out.println("Ei moista työntekijänumeroa!");
+//            }
+//        }
+//
+//        this.peli.getPelaaja().lisaaTyontekijaTyomaalle(
+//                this.peli.getPelaaja().annaTyontekijat().get(tyontekijaNro),
+//                tyomaaNro);
+    }
+    
+    private void poistaTyontekijaTyomaalta() {
+        int tyontekijaNro = -1;
+        int tyomaaNro = -1;
+        
+        System.out.println("Valitse tyomaa: [x]~poistu");
+        for (int i = 0; i < this.peli.getPelaaja().annaTyomaat().size(); i++) {
+            Tyomaa t = this.peli.getPelaaja().annaTyomaat().get(i);
+            System.out.println(i + 1 + ". " + t);
+        }
+        String toinenKomento = lukija.nextLine();
+        if (!toinenKomento.equals("x")) {
+            try {
+                tyomaaNro = Integer.parseInt(toinenKomento);
+            } catch (Exception e) {
+                System.out.println("Anna numero tai [x]!");
+                return;
+            }
+            if (tyomaaNro < 1 && tyomaaNro > this.peli.getTyomaat().size()) {
+                System.out.println("Ei moista työntekijänumeroa!");
+            }
+        }
+        
     }
 }

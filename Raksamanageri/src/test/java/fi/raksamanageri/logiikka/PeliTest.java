@@ -1,15 +1,15 @@
 package fi.raksamanageri.logiikka;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import java.util.ArrayList;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PeliTest {
+    private Peli p;
     
     public PeliTest() {
+        this.p = new Peli();
     }
     
     @Before
@@ -17,28 +17,55 @@ public class PeliTest {
     }
     
     @Test
-    public void alussaNeljaUuttaTyomaata() {
-        Peli p = new Peli("asdf");
-        assertEquals(p.getTyomaat().size(), 4);
+    public void uudenTyomaanLisaysToimii() {
+        Tyomaa t = new Tyomaa(10, "");
+        this.p.lisaaUusiTyomaa(t);
+        assertEquals(this.p.getTyomaat().size(), 1);
     }
     
     @Test
-    public void tyomaidenLisaysToimii() {
-        Peli p = new Peli("");
-        p.luoUusiaTyomaita(4);
-        assertEquals(p.getTyomaat().size(), 8);
+    public void uudenTyomaanArpominenToimii() {
+        this.p.arvoUusiTyomaa();
+        assertEquals(this.p.getTyomaat().size(), 1);
     }
     
     @Test
-    public void alussaKuusiUuttaTyontekijaa() {
-        Peli p = new Peli("");
-        assertEquals(p.getVapaatTyontekijat().size(), 6);
+    public void uudenTyontekijanLisaysToimii() {
+        Tyontekija te = new Tyontekija(false, "");
+        this.p.lisaaUusiTyontekija(te);
+        assertEquals(this.p.getVapaatTyontekijat().size(), 1);
     }
     
     @Test
-    public void tyontekijoidenLisaysToimii() {
-        Peli p = new Peli("");
-        p.luoUusiaTyontekijoita(6);
-        assertEquals(p.getVapaatTyontekijat().size(), 12);
+    public void uudenTyontekijanArpominenToimii() {
+        this.p.arvoUusiTyontekija();
+        assertEquals(this.p.getVapaatTyontekijat().size(), 1);
     }
+    
+    @Test
+    public void tyomaanPoistoToimii() {
+        Tyomaa t = new Tyomaa(10, "");
+        this.p.lisaaUusiTyomaa(t);
+        this.p.poistaUusiTyomaa(t);
+        assertEquals(this.p.getTyomaat().size(), 0);
+    }
+    
+    @Test
+    public void tyontekijanPoistoToimii() {
+        Tyontekija te = new Tyontekija(false, "");
+        this.p.lisaaUusiTyontekija(te);
+        this.p.poistaUusiTyontekija(te);
+        assertEquals(this.p.getVapaatTyontekijat().size(), 0);
+    }
+    
+    @Test
+    public void metodiGetTyomaatToimii() {
+        ArrayList<Tyomaa> l = new ArrayList<Tyomaa>();
+        Tyomaa t = new Tyomaa(12, "asdf");
+        l.add(t);
+        this.p.lisaaUusiTyomaa(t);
+        assertEquals(l, this.p.getTyomaat());
+    }
+    
+   
 }

@@ -13,68 +13,154 @@ public class PelaajaTest {
     
     @Before
     public void setUp() {
-        p = new Pelaaja("");
-    }
-    
-    
-    @Test
-    public void pelaajaSaaOikeanNimen() {
-        Pelaaja k = new Pelaaja("asdf");
-        assertEquals(k.getNimi(), "asdf");
-    }
-    
-    @Test
-    public void pelaajaSaaOikeanNimenIlmanSyotetta() {
-        Pelaaja k = new Pelaaja("");
-        assertEquals(k.getNimi(), "Nimetön");
+        p = new Pelaaja();
     }
     
     @Test
     public void pelaajallaOikeaSummaRahaaAlussa() {
-        assertEquals(p.paljonkoRahaa(), 10000);
+        assertEquals(p.annaRahamaara(), 10000);
     }
     
     @Test
     public void pelaajallaOikeaSummaRahaaKunLisataanRahaa() {
-        p.muutaRahaMaaraa(2003);
-        assertEquals(p.paljonkoRahaa(), 12003);
+        p.muutaRahamaaraa(2003);
+        assertEquals(p.annaRahamaara(), 12003);
     } 
     
     @Test
     public void pelaajallaOikeaSummaRahaaKunVahennetaan() {
-        p.muutaRahaMaaraa(-300);
-        assertEquals(p.paljonkoRahaa(), 9700);
+        p.muutaRahamaaraa(-300);
+        assertEquals(p.annaRahamaara(), 9700);
     }
     
     @Test
     public void pelaajallaEiOleAlussaTyontekijoita() {
-        assertEquals(p.annaAlaiset().isEmpty(), true);
+        assertEquals(p.annaTyontekijat().isEmpty(), true);
     }
     
     @Test
     public void tyontekijanLisaysToimii() {
-        Tyontekija t = new Tyontekija(true);
-        p.lisaaAlainen(t);
-        assertEquals(p.annaAlaiset().size(), 1);
+        Tyontekija t = new Tyontekija(true, "");
+        p.lisaaTyontekija(t);
+        assertEquals(p.annaTyontekijat().size(), 1);
     }
     
     @Test
     public void tyontekijanPoistoToimii() {
-        Tyontekija t = new Tyontekija(true);
-        p.lisaaAlainen(t);
+        Tyontekija t = new Tyontekija(true, "");
+        p.lisaaTyontekija(t);
         p.poistaTyontekija(t);
-        assertEquals(p.annaAlaiset().isEmpty(), true);
+        assertEquals(p.annaTyontekijat().isEmpty(), true);
     }
     
     @Test
     public void oikeanTyontekijanPoistoToimii() {
-        Tyontekija a = new Tyontekija(true);
-        Tyontekija b = new Tyontekija(false);
-        p.lisaaAlainen(a);
-        p.lisaaAlainen(b);
+        Tyontekija a = new Tyontekija(true, "");
+        Tyontekija b = new Tyontekija(false, "");
+        p.lisaaTyontekija(a);
+        p.lisaaTyontekija(b);
         p.poistaTyontekija(a);
-        ArrayList l = p.annaAlaiset();
+        ArrayList l = p.annaTyontekijat();
         assertEquals(l.get(0), b);
+    }
+    
+    @Test
+    public void tyontekijanPoistoToimiiOikeallaSyotteella() {
+       Tyontekija t = new Tyontekija(true, "");
+       p.lisaaTyontekija(t);
+       assertEquals(true, p.poistaTyontekija(t));
+    }
+    
+    @Test
+    public void olematontaTyontekijaEiVoiPoistaa() {
+        Tyontekija t = new Tyontekija(true, "");
+        Tyontekija k = new Tyontekija(false, "");
+        p.lisaaTyontekija(k);
+        assertEquals(false, p.poistaTyontekija(t));
+    }
+    
+    @Test
+    public void palkatLasketaanOikeinIlmanTyontekijoita() {
+        p.seuraavaVuoro();
+        assertEquals(p.annaRahamaara(), 10000);
+    }
+    
+    @Test
+    public void palkatLasketaanOikeinKunTyontekijoita() {
+        p.lisaaTyontekija(new Tyontekija(true, ""));
+        p.seuraavaVuoro();
+        assertEquals(p.annaRahamaara(), 9000);
+    }
+    
+    @Test
+    public void tyomaanLisaysToimiiOikein() {
+        Tyomaa te = new Tyomaa(12, "");
+        this.p.lisääTyomaa(te);
+        assertEquals(this.p.annaTyomaat().size(), 1);
+    }
+    
+    @Test
+    public void tyomaidenAntoToimiiOikein() {
+        ArrayList<Tyomaa> l = new ArrayList<Tyomaa>();
+        Tyomaa te = new Tyomaa(12, "");
+        Tyomaa td = new Tyomaa(10, "asdf");
+        l.add(te);
+        l.add(td);
+        this.p.lisääTyomaa(te);
+        this.p.lisääTyomaa(td);
+        assertEquals(this.p.annaTyomaat(), l);
+    }
+    
+    @Test
+    public void tyomaanPoistoToimiiOikein() {
+        Tyomaa te = new Tyomaa(23, "");
+        this.p.lisääTyomaa(te);
+        this.p.poistaTyomaa(te);
+        assertEquals(this.p.annaTyomaat().size(), 0);
+    }
+    
+    @Test
+    public void tyontekijaLisaysTyomaalleToimii() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        assertEquals(te.getTyontekijat().size(), 1);
+    }
+    
+    @Test
+    public void tyontekijanLisaysTyomaalleToimiiKaksi() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        assertEquals(tt.missaToissa(), te);
+    }
+    
+    @Test
+    public void tyontekijaPoistoTyomaaltaToimii() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        this.p.poistaTyontekijaTyomaalta(tt, te);
+        assertEquals(te.getTyontekijat().size(), 0);
+    }
+    
+    @Test
+    public void tyontekijaPoistoTyomaaltaToimiiKaksi() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        this.p.poistaTyontekijaTyomaalta(tt, te);
+        assertEquals(tt.missaToissa(), null);
+    }
+    
+    @Test
+    public void tyomaatPaivittyvatOikein() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisääTyomaa(te);
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        this.p.seuraavaVuoro();
+        assertEquals(te.getValmiina(), 10);
     }
     
 }
