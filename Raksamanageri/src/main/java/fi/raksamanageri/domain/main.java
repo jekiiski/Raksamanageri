@@ -1,6 +1,8 @@
 
 package fi.raksamanageri.domain;
 
+import fi.raksamanageri.cli.CLI;
+
 public class main {
     
     public static void main(String[] args) {
