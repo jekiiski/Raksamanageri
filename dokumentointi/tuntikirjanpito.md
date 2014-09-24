@@ -21,3 +21,11 @@
 16.9  6h	Luokille tehty testejä, pieni CLI työn alla
 
 17.9  8h	Lisää testejä + pit + cobertura. GUI:n mietintä käynnissä
+
+19.9  4h GUI hahmoteltu paperille
+
+22.9  4h GUI:n ohjelmointi aloitettu
+
+23.9  4h metodi seuraavaVuoro() päivitetty luokkiin
+
+24.9  8h GUI beta-vaiheessa. Peliä voi jo pelata, mutta tallennusta ei vielä implementoitu ja uusia työntekijöitä ja -maita ei generoida vielä. Verottaja ja rakennusvalvoja hahmotteluvaiheessa.
