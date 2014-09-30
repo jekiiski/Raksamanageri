@@ -15,6 +15,7 @@ public class Peli {
     private ArrayList<Tyomaa> vapaatTyomaat;
     private ArrayList<Tyontekija> vapaatTyontekijat;
     private SatunnaisGeneraattori sk;
+    private ArrayList<Patevyys> patevyydet;
 
     /**
      * Konstruktori ei tarvitse parametreja. Tässä alustetaan peli ja sen muuttujat
@@ -26,6 +27,12 @@ public class Peli {
         this.vapaatTyomaat = new ArrayList<Tyomaa>();
         this.vapaatTyontekijat = new ArrayList<Tyontekija>();
         this.sk = new SatunnaisGeneraattori();
+        
+        // alustetaan pätevyydet, vakiona 3 erilaista
+        this.patevyydet = new ArrayList<Patevyys>();
+        this.patevyydet.add(new Patevyys("Sähkö"));
+        this.patevyydet.add(new Patevyys("Putki"));
+        this.patevyydet.add(new Patevyys("Julkisivu"));
     }
 
     /**

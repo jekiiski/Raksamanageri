@@ -1,5 +1,6 @@
 package fi.raksamanageri.gui;
 
+import fi.raksamanageri.domain.Patevyys;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyontekija;
 
@@ -16,8 +17,10 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         this.tyontekijaIndeksi = 0;
         initComponents();
 
-//        //debug
-//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "pekka"));
+        //debug
+        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "pekka"));
+        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Sähkö"));
+        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Putki"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "ahti"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "raimo"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "markku"));
@@ -45,6 +48,17 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         this.label_tyontekijanPatevyydet.setText("");
         this.button_erotaTyontekija.setEnabled(true);
         this.button_tyoMaa.setVisible(true);
+        
+        // asetetaan pätevyydet jLabel-muuttujaan html-koodilla
+        // jotta saadaan rivinvaihdot mukaan
+        if(!this.valittuTyontekija.annaPatevyydet().isEmpty()) {
+            String ulos = "<html>";
+            for (Patevyys p : this.valittuTyontekija.annaPatevyydet()) {
+                ulos += p.getNimi() + "<br>";
+            }
+            ulos += "</html>";
+            this.label_tyontekijanPatevyydet.setText(ulos);
+        }
 
         // asetetaan seuraavaTyontekija-nappi
         if (this.peli.getPelaaja().annaTyontekijat().size() > indeksi + 1) {

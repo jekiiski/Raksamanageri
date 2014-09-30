@@ -42,7 +42,7 @@ public class Tyontekija {
      * 
      * @return pätevyydet 
      */
-    public ArrayList annaPatevyydet() {
+    public ArrayList<Patevyys> annaPatevyydet() {
         return this.patevyydet;
     }
 
