@@ -17,6 +17,7 @@ public class Tyomaa {
     private ArrayList<Tyontekija> tyontekijat;
     private String nimi;
     private SatunnaisGeneraattori sk;
+    private ArrayList<Patevyys> vaaditutPatevyydet;
     
     /**
      * Alustaa työmaan. 
@@ -33,7 +34,18 @@ public class Tyomaa {
         this.nimi = nimi;
         this.sk = new SatunnaisGeneraattori();
         this.palkkio = this.sk.generoiTyomaaPalkkio(this);
+        this.vaaditutPatevyydet = new ArrayList<Patevyys>();
         
+    }
+    
+    public void lisaaVaadittavaPatevyys(Patevyys p) {
+        if (!this.vaaditutPatevyydet.contains(p)) {
+            this.vaaditutPatevyydet.add(p);
+        }
+    }
+    
+    public ArrayList<Patevyys> annaVaaditutPatevyydet() {
+        return this.vaaditutPatevyydet;
     }
     
     /**

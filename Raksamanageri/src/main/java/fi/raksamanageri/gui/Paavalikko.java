@@ -91,6 +91,11 @@ public class Paavalikko extends javax.swing.JFrame {
 
         button_tallennaJaLopeta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         button_tallennaJaLopeta.setText("Tallenna ja lopeta");
+        button_tallennaJaLopeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_tallennaJaLopetaActionPerformed(evt);
+            }
+        });
 
         button_lopeta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         button_lopeta.setText("Lopeta");
@@ -253,6 +258,11 @@ public class Paavalikko extends javax.swing.JFrame {
         this.peli.seuraavaVuoro();
         updatePaavalikko();
     }//GEN-LAST:event_button_seuraavaVuoroActionPerformed
+
+    private void button_tallennaJaLopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tallennaJaLopetaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_button_tallennaJaLopetaActionPerformed
 
     /**
      * @param args the command line arguments

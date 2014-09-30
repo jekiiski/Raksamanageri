@@ -39,4 +39,18 @@ public class SatunnaisGeneraattori {
         return (t.getLaajuus() + (-3 + this.random.nextInt(14))) * 40;
     }
     
+    public boolean rakennustarkastajaKylaan() {
+        if (this.random.nextInt(3) == 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean verottajanTarkastus() {
+        if (this.random.nextInt(5) == 0) {
+            return true;
+        }
+        return false;
+    }
+    
 }

@@ -2,6 +2,8 @@ package fi.raksamanageri.domain;
 
 import fi.raksamanageri.logiikka.SatunnaisGeneraattori;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  * Peli sisältää peliä pelaavan pelaajan tiedot, uudet työntekijät sekä
@@ -126,6 +128,34 @@ public class Peli {
      * @see Pelaaja.seuraavaVuoro()
      */
     public void seuraavaVuoro() {
+        // Rakennustarkastajan käynti
+        // IMPLEMENTOINTI KESKEN
+        
+        // verottajan käynti
+        if (this.sk.verottajanTarkastus()) {
+            for (Tyomaa t : this.pelaaja.annaTyomaat()) {
+                if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
+                    int sakko = t.getLaajuus() * 10;
+                    JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                            + " et ole maksanut veroja ainakaan yhdeltä työntekijältä. "
+                            + "Verottaja määrää sinulle veromätkyjä " + sakko,
+                            "Verottajan tarkastus", WARNING_MESSAGE);
+                    this.pelaaja.muutaRahamaaraa(-sakko);
+                }
+            }
+        }
+        
+        // uusien työmaiden generointi
+        if (this.vapaatTyomaat.size() < 3) {
+             this.vapaatTyomaat.add(this.sk.generoiUusiTyomaa());
+        }
+        
+        // uusien työntekijöiden generointi
+        if (this.vapaatTyontekijat.size() < 3) {
+            this.vapaatTyontekijat.add(this.sk.generoiUusiTyontekija());
+        }
+        
         this.pelaaja.seuraavaVuoro();
+        
     }
 }

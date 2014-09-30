@@ -18,9 +18,9 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         initComponents();
 
         //debug
-        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "pekka"));
-        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Sähkö"));
-        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Putki"));
+//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "pekka"));
+//        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Sähkö"));
+//        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Putki"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "ahti"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "raimo"));
 //        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "markku"));
