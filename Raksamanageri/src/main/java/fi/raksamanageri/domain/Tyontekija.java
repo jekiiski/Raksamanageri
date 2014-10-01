@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Luokka kuvaa työmaalla työskentelevää työntekijää, jonka palkan maksaa pelaaja
  * @author eikkari
  */
-public class Tyontekija {
+public class Tyontekija implements java.io.Serializable {
 
     private int palkka;
     private final boolean kotimainen;

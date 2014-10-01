@@ -4,7 +4,7 @@ import fi.raksamanageri.domain.Tyomaa;
 import fi.raksamanageri.domain.Tyontekija;
 import java.util.Random;
 
-public class SatunnaisGeneraattori {
+public class SatunnaisGeneraattori implements java.io.Serializable {
     private Random random;
     private int tyomaaLaskuri;
     private int tyontekijaLaskuri;

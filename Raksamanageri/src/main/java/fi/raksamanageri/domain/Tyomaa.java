@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * saavat työmaan tehtyä, pelaajalle siirtyy työmaan palkkio.
  * @author eikkari
  */
-public class Tyomaa {
+public class Tyomaa implements java.io.Serializable {
     private int palkkio;
     private int laajuus;
     private int valmiina;

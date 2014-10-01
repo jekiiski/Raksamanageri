@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
@@ -45,12 +47,14 @@ public class Tiedostonkasittelija {
             fileIn.close();
         } catch (IOException i) {
 //            i.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Tiedostoa " + ladattava.getAbsolutePath() +
+                    " ei löytynyt tai se on vahingoittunut!", "Tiedostovirhe",  WARNING_MESSAGE);
             return null;
         } catch (ClassNotFoundException c) {
 //            System.out.println("Peli-luokkaa ei löytynyt");
 //            c.printStackTrace();
             return null;
-        }
+        } 
         return p;
     }
 }

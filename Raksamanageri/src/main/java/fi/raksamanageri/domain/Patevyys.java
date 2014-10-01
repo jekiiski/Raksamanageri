@@ -6,7 +6,7 @@ package fi.raksamanageri.domain;
  * ilman, että rakennustarkastaja suuttuu
  * @author eikkari
  */
-public class Patevyys {
+public class Patevyys implements java.io.Serializable {
     private String nimi;
     
     /**

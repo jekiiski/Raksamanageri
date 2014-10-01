@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Luokka kuvaa pelajaa ja antaa pelin kannalta tärkeät metodit käyttöön
  */
-public class Pelaaja {
+public class Pelaaja implements java.io.Serializable {
 
     private int rahaMaara;
     private static final int ALKURAHA = 10000;

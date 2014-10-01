@@ -1,7 +1,9 @@
 package fi.raksamanageri.gui;
 
 import fi.raksamanageri.domain.Peli;
+import fi.raksamanageri.logiikka.Tiedostonkasittelija;
 import java.awt.Dimension;
+import java.io.File;
 import javax.swing.JFileChooser;
 
 public class Aloitus extends javax.swing.JFrame {
@@ -101,9 +103,32 @@ public class Aloitus extends javax.swing.JFrame {
 
     private void button_lataaPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lataaPeliActionPerformed
         // TODO add your handling code here:
+        Tiedostonkasittelija k = new Tiedostonkasittelija();
+
         JFileChooser lataaja = new JFileChooser();
         int paluuArvo = lataaja.showDialog(this, "Lataa");
- 
+
+        Peli peli = null;
+
+        if (paluuArvo == JFileChooser.APPROVE_OPTION) {
+            File file = lataaja.getSelectedFile();
+            try {
+                peli = k.lataaPeli(file);
+            } catch (Exception e) {
+                // Tiedostonkäsittelijä käy läpi virheet
+                // tänne ehkä throws exception? koska try/catch tarpeeton
+            }
+        }
+
+        if (peli != null) {
+            this.setVisible(false);
+            Paavalikko p = new Paavalikko(peli);
+            p.setPreferredSize(new Dimension(800, 600));
+            p.setLocation(this.getLocation().x, this.getLocation().y);
+            p.setVisible(true);
+        }
+
+
     }//GEN-LAST:event_button_lataaPeliActionPerformed
 
     private void button_lopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lopetaActionPerformed

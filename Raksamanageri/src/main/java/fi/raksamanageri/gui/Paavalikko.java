@@ -1,6 +1,9 @@
 package fi.raksamanageri.gui;
 
 import fi.raksamanageri.domain.Peli;
+import fi.raksamanageri.logiikka.Tiedostonkasittelija;
+import java.io.File;
+import javax.swing.JFileChooser;
 
 public class Paavalikko extends javax.swing.JFrame {
     
@@ -261,7 +264,17 @@ public class Paavalikko extends javax.swing.JFrame {
 
     private void button_tallennaJaLopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tallennaJaLopetaActionPerformed
         // TODO add your handling code here:
+        Tiedostonkasittelija k = new Tiedostonkasittelija();
         
+        JFileChooser lataaja = new JFileChooser();
+        int paluuArvo = lataaja.showDialog(this, "Tallenna");
+        
+        if (paluuArvo == JFileChooser.APPROVE_OPTION) {
+                File file = lataaja.getSelectedFile();
+                k.tallennaPeli(file, peli);
+        }
+        
+        System.exit(0);
     }//GEN-LAST:event_button_tallennaJaLopetaActionPerformed
 
     /**

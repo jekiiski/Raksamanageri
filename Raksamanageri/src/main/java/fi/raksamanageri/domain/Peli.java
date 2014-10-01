@@ -1,6 +1,7 @@
 package fi.raksamanageri.domain;
 
 import fi.raksamanageri.logiikka.SatunnaisGeneraattori;
+import fi.raksamanageri.logiikka.Tiedostonkasittelija;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
@@ -9,7 +10,7 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * Peli sisältää peliä pelaavan pelaajan tiedot, uudet työntekijät sekä
  * uudet työmaat.
  */
-public class Peli {
+public class Peli implements java.io.Serializable {
 
     private boolean voitto;
     private boolean vararikko;
