@@ -27,7 +27,7 @@ public class Aloitus extends javax.swing.JFrame {
 
         button_uusiPeli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         button_uusiPeli.setText("Uusi peli");
-        button_uusiPeli.setToolTipText("");
+        button_uusiPeli.setToolTipText("Aloita uusi peli");
         button_uusiPeli.setActionCommand("uusiPeli");
         button_uusiPeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -37,6 +37,7 @@ public class Aloitus extends javax.swing.JFrame {
 
         button_lataaPeli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         button_lataaPeli.setText("Lataa peli");
+        button_lataaPeli.setToolTipText("Lataa vanha peli");
         button_lataaPeli.setActionCommand("lataaPeli");
         button_lataaPeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
