@@ -29,3 +29,11 @@
 23.9  4h metodi seuraavaVuoro() päivitetty luokkiin
 
 24.9  8h GUI beta-vaiheessa. Peliä voi jo pelata, mutta tallennusta ei vielä implementoitu ja uusia työntekijöitä ja -maita ei generoida vielä. Verottaja ja rakennusvalvoja hahmotteluvaiheessa.
+
+25.9  1h GUI:ta päivitetty
+
+26.9  1h Lisää GUI:n päivitystä, tallennus ja lataaminen työn alla
+
+29.10 4h Verottaja osaa tulla kylään (mutta liian usein). 
+
+1.10  5h Pelin voi tallentaa ja ladata. Verottaja käy jo kylässä satunnaisesti. Pätevyydet näkyvät tyontekijällä. Työmaille ei vielä lisätty pätevyysvaatimuksia.
