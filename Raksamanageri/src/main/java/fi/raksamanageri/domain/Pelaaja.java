@@ -144,26 +144,6 @@ public class Pelaaja implements java.io.Serializable {
         muutaRahamaaraa(-palkat);
     }
 
-    private void paivitaTyomaatVANHA() {
-        for (int i = 0; i < this.tyomaat.size(); i++) {
-            this.tyomaat.get(i).seuraavaVuoro();
-
-            // jos työmaa tulee valmiiksi
-            if (this.tyomaat.get(i).getLaajuus() <= this.tyomaat.get(i).getValmiina()) {
-                // lisää palkkio pelaajan rahoihin
-                muutaRahamaaraa(this.tyomaat.get(i).getPalkkio());
-
-                // poista työntekijät työmaalta
-                for (int j = 0; j < this.tyomaat.get(i).getTyontekijat().size(); j++) {
-                    this.tyomaat.get(i).getTyontekijat().get(j).poistaTyomaalta();
-                    this.tyomaat.get(i).poistaTyontekija(this.tyomaat.get(i).getTyontekijat().get(j));
-                }
-                // ja poista itse työmaa
-                this.tyomaat.remove(i);
-            }
-        }
-    }
-
     private void paivitaTyomaat() {
         for (int i = 0; i < this.tyomaat.size(); i++) {
             Tyomaa maa = this.tyomaat.get(i);

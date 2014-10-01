@@ -121,4 +121,30 @@ public class TyomaaTest {
         this.t.poistaTyontekija(te);
         assertEquals(te.missaToissa(), null);
     }
+    
+    @Test
+    public void eiVoiLisataOlemassaOlevaaPatevyytta() {
+        Patevyys p = new Patevyys("a");
+        this.t.lisaaVaadittavaPatevyys(p);
+        this.t.lisaaVaadittavaPatevyys(p);
+        assertEquals(this.t.annaVaaditutPatevyydet().size(), 1);
+    }
+    
+    @Test
+    public void patevyydenLisaysToimii() {
+        this.t.lisaaVaadittavaPatevyys(new Patevyys("a"));
+        assertEquals(this.t.annaVaaditutPatevyydet().size(), 1);
+    }
+    
+    @Test
+    public void getNimiMetodiToimii() {
+        assertEquals("", this.t.getNimi());
+    }
+    
+    @Test
+    public void uudenPalkkionAsettaminenToimii() {
+        int nykyinenPalkkio = this.t.getPalkkio();
+        this.t.setPalkkio(-1);
+        assertNotSame(t.getPalkkio(), nykyinenPalkkio);
+    }
 }

@@ -166,4 +166,49 @@ public class PelaajaTest {
         assertEquals(te.getValmiina(), 10);
     }
     
+    @Test
+    public void lisaaTyontekijaTyomaalleLaitaToihinMetodi() {
+        Tyomaa te = new Tyomaa(23, "");
+        Tyontekija tt = new Tyontekija(true, "");
+        this.p.lisaaTyontekijaTyomaalle(tt, te);
+        assertEquals(tt.missaToissa(), te);
+    }
+    
+    @Test
+    public void pelaajaSaaRahaaKunTyomaaValmis() {
+        Tyomaa maa = new Tyomaa(9, "");
+        Tyontekija t = new Tyontekija(true, "");
+        p.lisääTyomaa(maa);
+        p.lisaaTyontekija(t);
+        int rahatAlussa = this.p.annaRahamaara();
+        int maaPalkkio = maa.getPalkkio();
+        int palkat = t.getPalkka();
+        this.p.lisaaTyontekijaTyomaalle(t, maa);
+        this.p.seuraavaVuoro();
+        int rahatVuoronJalkeen = this.p.annaRahamaara();
+        assertEquals(rahatVuoronJalkeen, maaPalkkio+rahatAlussa-palkat);
+    }
+    
+    @Test
+    public void tyomaaPoistuuKunValmista() {
+        Tyomaa maa = new Tyomaa(9, "");
+        Tyontekija t = new Tyontekija(true, "");
+        p.lisääTyomaa(maa);
+        p.lisaaTyontekija(t);
+        this.p.lisaaTyontekijaTyomaalle(t, maa);
+        this.p.seuraavaVuoro();
+        assertEquals(p.annaTyomaat().size(), 0);
+    }
+    
+    @Test
+    public void tyontekijatPoistuvatTyomaaltaKunValmista() {
+        Tyomaa maa = new Tyomaa(9, "");
+        Tyontekija t = new Tyontekija(true, "");
+        p.lisääTyomaa(maa);
+        p.lisaaTyontekija(t);
+        this.p.lisaaTyontekijaTyomaalle(t, maa);
+        this.p.seuraavaVuoro();
+        assertEquals(null, t.missaToissa());
+    }
+    
 }

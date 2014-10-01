@@ -70,5 +70,37 @@ public class PeliTest {
         assertEquals(l, this.p.getTyomaat());
     }
     
-   
+    @Test
+    public void peliPalauttaaPelaajan() {
+        assertNotNull(this.p.getPelaaja());
+    }
+    
+    @Test
+    public void uusiaTyomaitaTehdaan() {
+        for (int i=0; i<this.p.getTyomaat().size(); i++) {
+            this.p.getPelaaja().lisääTyomaa(this.p.getTyomaat().get(i));
+        }
+        this.p.seuraavaVuoro();
+        assertNotSame(p.getTyomaat().size(), 0);
+    }
+    
+    @Test
+    public void uusiaTyomaitaEiTehdaJosNiitaOnTarpeeksi() {
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        assertEquals(3, this.p.getTyomaat().size());
+    }
+    
+    @Test
+    public void uusiaTyontekijoitaEiLuodaJosTarpeeksi() {
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        this.p.seuraavaVuoro();
+        assertEquals(3, this.p.getVapaatTyontekijat().size());
+    }
 }
