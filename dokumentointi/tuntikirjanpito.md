@@ -37,3 +37,5 @@
 29.10 4h Verottaja osaa tulla kylään (mutta liian usein). 
 
 1.10  5h Pelin voi tallentaa ja ladata. Verottaja käy jo kylässä satunnaisesti. Pätevyydet näkyvät tyontekijällä. Työmaille ei vielä lisätty pätevyysvaatimuksia.
+
+2.10  2h Aiheen kuvausta tarkennettu, luokkakaavio tarkastettu.
