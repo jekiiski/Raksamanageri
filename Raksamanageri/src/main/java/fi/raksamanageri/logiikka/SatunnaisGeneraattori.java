@@ -36,18 +36,18 @@ public class SatunnaisGeneraattori implements java.io.Serializable {
     }
     
     public int generoiTyomaaPalkkio(Tyomaa t) {
-        return (t.getLaajuus() + (-3 + this.random.nextInt(14))) * 40;
+        return (t.getLaajuus() + (-3 + this.random.nextInt(14))) * 60;
     }
     
     public boolean rakennustarkastajaKylaan() {
-        if (this.random.nextInt(3) == 0) {
+        if (this.random.nextInt(30) == 0) {
             return true;
         }
         return false;
     }
     
     public boolean verottajanTarkastus() {
-        if (this.random.nextInt(5) == 0) {
+        if (this.random.nextInt(10) == 0) {
             return true;
         }
         return false;

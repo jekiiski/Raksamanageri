@@ -14,6 +14,8 @@ public class Tyontekija implements java.io.Serializable {
     private ArrayList patevyydet;
     private Tyomaa tyoMaa;
     private String nimi;
+    private static int KOTIMAINEN_PALKKA = 400;
+    private static int ULKOMAINEN_PALKKA = 300;
 
     /**
      * Konstruktorissa määritellään työntekijä. Kotimainen on tehokkaampi ja kalliimpi, 
@@ -29,10 +31,10 @@ public class Tyontekija implements java.io.Serializable {
         this.nimi = nimi;
 
         if (onkoKotimainen) {
-            this.palkka = 1000;
+            this.palkka = KOTIMAINEN_PALKKA;
             this.tyoteho = 10;
         } else {
-            this.palkka = 400;
+            this.palkka = ULKOMAINEN_PALKKA;
             this.tyoteho = 8;
         }
     }

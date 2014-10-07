@@ -131,12 +131,26 @@ public class Peli implements java.io.Serializable {
     public void seuraavaVuoro() {
         // Rakennustarkastajan käynti
         // IMPLEMENTOINTI KESKEN
+        if (this.sk.rakennustarkastajaKylaan()) {
+            for (Tyomaa t : this.pelaaja.annaTyomaat()) {
+                if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
+                    int lisaTyot = t.getLaajuus() / 3;
+                    JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                            + " ulkomaiset työntekijä ovat tehneet niin huonoa "
+                            + "työtä, että rakennustarkastaja määrää sinut "
+                            + "teettämään " + lisaTyot + " yksikön verran lisää "
+                            + "töitä",
+                            "Rakannustarkastajan tarkastus", WARNING_MESSAGE);
+                    t.lisaaLaajuutta(lisaTyot);
+                }
+            }
+        }
         
         // verottajan käynti
         if (this.sk.verottajanTarkastus()) {
             for (Tyomaa t : this.pelaaja.annaTyomaat()) {
                 if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
-                    int sakko = t.getLaajuus() * 10;
+                    int sakko = t.getLaajuus() * 30;
                     JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
                             + " et ole maksanut veroja ainakaan yhdeltä työntekijältä. "
                             + "Verottaja määrää sinulle veromätkyjä " + sakko,
@@ -146,17 +160,34 @@ public class Peli implements java.io.Serializable {
             }
         }
         
-        // uusien työmaiden generointi
-        if (this.vapaatTyomaat.size() < 3) {
-             this.vapaatTyomaat.add(this.sk.generoiUusiTyomaa());
+        // uusien työmaiden generointi, vanhat poistetaan
+        this.vapaatTyomaat.clear();
+        for (int i=0; i<3; i++) {
+            this.vapaatTyomaat.add(this.sk.generoiUusiTyomaa());
         }
-        
-        // uusien työntekijöiden generointi
-        if (this.vapaatTyontekijat.size() < 3) {
+ 
+        // uusien työntekijöiden generointi, vanhat poistetaan
+        this.vapaatTyontekijat.clear();
+        for (int i=0; i<3; i++) {
             this.vapaatTyontekijat.add(this.sk.generoiUusiTyontekija());
         }
         
         this.pelaaja.seuraavaVuoro();
         
+        
+        // GUI ilmoittaa pelaajalle vararikosta ja voitosta
+        if (this.pelaaja.annaRahamaara() < 0) {
+            this.vararikko = true;
+        } else if (this.pelaaja.annaRahamaara() > 1000000) {
+            this.voitto = true;
+        }
+    }
+    
+    public boolean onkoVoitettu() {
+        return this.voitto;
+    }
+    
+    public boolean onkoHavittu() {
+        return this.vararikko;
     }
 }

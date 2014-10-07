@@ -16,14 +16,6 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         this.valikko = v;
         this.tyontekijaIndeksi = 0;
         initComponents();
-
-        //debug
-//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "pekka"));
-//        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Sähkö"));
-//        this.peli.getPelaaja().annaTyontekijat().get(0).lisaaPatevyys(new Patevyys("Putki"));
-//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "ahti"));
-//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(false, "raimo"));
-//        this.peli.getPelaaja().lisaaTyontekija(new Tyontekija(true, "markku"));
         paivita();
     }
 
@@ -45,21 +37,10 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         this.label_tyontekijaTyoteho.setText("" + this.valittuTyontekija.getTyoteho());
         this.label_tyontekijanNimi.setText(this.valittuTyontekija.getNimi());
         this.label_tyontekijanPalkka.setText("" + this.valittuTyontekija.getPalkka());
-        this.label_tyontekijanPatevyydet.setText("");
+        //this.label_tyontekijanPatevyydet.setText("");
         this.button_erotaTyontekija.setEnabled(true);
         this.button_tyoMaa.setVisible(true);
         
-        // asetetaan pätevyydet jLabel-muuttujaan html-koodilla
-        // jotta saadaan rivinvaihdot mukaan
-        if(!this.valittuTyontekija.annaPatevyydet().isEmpty()) {
-            String ulos = "<html>";
-            for (Patevyys p : this.valittuTyontekija.annaPatevyydet()) {
-                ulos += p.getNimi() + "<br>";
-            }
-            ulos += "</html>";
-            this.label_tyontekijanPatevyydet.setText(ulos);
-        }
-
         // asetetaan seuraavaTyontekija-nappi
         if (this.peli.getPelaaja().annaTyontekijat().size() > indeksi + 1) {
             this.button_seuraavaTyontekija.setEnabled(true);
@@ -81,12 +62,7 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
             this.label_tyontekijanKansalaisuus.setText("Ulkomainen");
         }
 
-//        // tarkistetaan onko töissä työmaalla
-//        if (this.valittuTyontekija.missaToissa() != null) {
-//            this.label_tyontekijanTyomaa.setText(this.valittuTyontekija.missaToissa().getNimi());
-//        } else {
-//            this.label_tyontekijanTyomaa.setText("Ei töissä");
-//        }
+        // laitetaan työntekijän työmaa oikein
         if (this.valittuTyontekija.missaToissa() != null) {
             this.button_tyoMaa.setText(this.valittuTyontekija.missaToissa().getNimi());
         } else {
@@ -100,9 +76,7 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         this.label_tyontekijaTyoteho.setText("");
         this.label_tyontekijanKansalaisuus.setText("");
         this.label_tyontekijanNimi.setText("");
-//        this.label_tyontekijanTyomaa.setText("");
         this.label_tyontekijanPalkka.setText("");
-        this.label_tyontekijanPatevyydet.setText("");
         this.button_edellinenTyontekija.setEnabled(false);
         this.button_seuraavaTyontekija.setEnabled(false);
         this.button_erotaTyontekija.setEnabled(false);
@@ -131,8 +105,6 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         label_staticPalkka = new javax.swing.JLabel();
         label_tyontekijanPalkka = new javax.swing.JLabel();
         label_staticTyopiste = new javax.swing.JLabel();
-        label_staticPatevyydet = new javax.swing.JLabel();
-        label_tyontekijanPatevyydet = new javax.swing.JLabel();
         button_valmis = new javax.swing.JButton();
         button_erotaTyontekija = new javax.swing.JButton();
         button_tyoMaa = new javax.swing.JButton();
@@ -186,13 +158,6 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
 
         label_staticTyopiste.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_staticTyopiste.setText("Työpiste");
-
-        label_staticPatevyydet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_staticPatevyydet.setText("Pätevyydet");
-
-        label_tyontekijanPatevyydet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_tyontekijanPatevyydet.setText("jLabel2");
-        label_tyontekijanPatevyydet.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         button_valmis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         button_valmis.setText("Valmis");
@@ -249,17 +214,11 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
                             .addComponent(button_tyoMaa, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(label_staticPatevyydet)
-                                .addGap(210, 210, 210))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_staticKansalaisuus)
-                                    .addComponent(label_tyontekijanKansalaisuus)
-                                    .addComponent(label_staticPalkka)
-                                    .addComponent(label_tyontekijanPatevyydet, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_tyontekijanPalkka))
-                                .addGap(119, 119, 119)))))
+                            .addComponent(label_staticKansalaisuus)
+                            .addComponent(label_tyontekijanKansalaisuus)
+                            .addComponent(label_staticPalkka)
+                            .addComponent(label_tyontekijanPalkka))
+                        .addGap(196, 196, 196)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -287,14 +246,10 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
                     .addComponent(label_tyontekijaTyoteho)
                     .addComponent(label_tyontekijanPalkka))
                 .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_staticTyopiste)
-                    .addComponent(label_staticPatevyydet))
+                .addComponent(label_staticTyopiste)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_tyontekijanPatevyydet, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_tyoMaa))
-                .addGap(66, 66, 66)
+                .addComponent(button_tyoMaa)
+                .addGap(155, 155, 155)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_erotaTyontekija)
                     .addComponent(button_valmis))
@@ -333,49 +288,12 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
     }//GEN-LAST:event_button_edellinenTyontekijaActionPerformed
 
     private void button_tyoMaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tyoMaaActionPerformed
-        // TODO add your handling code here:
-
         // lisää työntekijä työmaalle
         LisaaTyontekijaTyomaalle l = new LisaaTyontekijaTyomaalle(peli, this, valittuTyontekija);
         this.setVisible(false);
         l.setLocation(this.getLocation().x, this.getLocation().y);
         l.setVisible(true);
     }//GEN-LAST:event_button_tyoMaaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HallitseTyontekijoita().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_edellinenTyontekija;
@@ -386,7 +304,6 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
     private javax.swing.JLabel label_staticKansalaisuus;
     private javax.swing.JLabel label_staticNimi;
     private javax.swing.JLabel label_staticPalkka;
-    private javax.swing.JLabel label_staticPatevyydet;
     private javax.swing.JLabel label_staticTyopiste;
     private javax.swing.JLabel label_staticTyoteho;
     private javax.swing.JLabel label_tyontekijaTyoteho;
@@ -394,6 +311,5 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
     private javax.swing.JLabel label_tyontekijanKansalaisuus;
     private javax.swing.JLabel label_tyontekijanNimi;
     private javax.swing.JLabel label_tyontekijanPalkka;
-    private javax.swing.JLabel label_tyontekijanPatevyydet;
     // End of variables declaration//GEN-END:variables
 }

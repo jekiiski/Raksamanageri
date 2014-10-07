@@ -4,6 +4,8 @@ import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.logiikka.Tiedostonkasittelija;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 public class Paavalikko extends javax.swing.JFrame {
     
@@ -260,6 +262,17 @@ public class Paavalikko extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.peli.seuraavaVuoro();
         updatePaavalikko();
+        
+        if (this.peli.onkoVoitettu()) {
+            JOptionPane.showMessageDialog(null, "Saavutit tavoitteesi 1000000",
+                            "Voitto", INFORMATION_MESSAGE);
+            this.setVisible(false);
+            Aloitus.main(null);
+        } else if (this.peli.onkoHavittu()) {
+            JOptionPane.showMessageDialog(null, "Olet vararikossa!", "Häviö", INFORMATION_MESSAGE);
+            this.setVisible(false);
+            Aloitus.main(null);
+        }
     }//GEN-LAST:event_button_seuraavaVuoroActionPerformed
 
     private void button_tallennaJaLopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tallennaJaLopetaActionPerformed
