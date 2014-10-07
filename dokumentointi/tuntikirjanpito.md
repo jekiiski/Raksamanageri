@@ -39,3 +39,9 @@
 1.10  5h Pelin voi tallentaa ja ladata. Verottaja käy jo kylässä satunnaisesti. Pätevyydet näkyvät tyontekijällä. Työmaille ei vielä lisätty pätevyysvaatimuksia.
 
 2.10  2h Aiheen kuvausta tarkennettu, luokkakaavio tarkastettu.
+
+3.10  2h Koodia hieman siivottu.
+
+6.10  4h JavaDoc domain ja työkalu -paketeilla
+
+7.10  8h Coberturan säätöä, testien lausekattavuus >90%, mutantteja jää jatkuvasti. Poistettu tekstikäyttöliittymä. GUI:sta poistettu status-bar. Pätevyydet poistettu käytöstä, lisätään jos aikaa jää.
