@@ -4,24 +4,22 @@ Raksamanageri
 ** Projektin TO-DO **
 
 * Tallentaminen ja lataaminen toimii
-	+ Exceptionit pitää vielä varmistaa
+	+ Muuten ok, mutta domain-paketissa käytetään JOptionPane, joten voi heittää HeadlessException. Ajan salliessa korjataan kaikki GUI:hin liittyvä oikeisiin paketteihin ja (GUI)luokkiin 
 * Yllätysvieraat käyvät kylässä
-	+ Verottaja toimii, mutta käy kylässä liian usein
-	+ Rakennusvalvojaa ei vielä implementoitu
+	+ Verottaja ja rakennusvalvoja toimivat
 * Koodin siivous
-	+ Ei todellakaan täytä cleancode-periaatteita
-	+ Pitää eriyttää logiikka domaineista ja guista
-	+ Lisää javadoc logiikkaan ja domaineihin
+	+ Ei täytä cleancode-periaatteita
+	+ Pitää eriyttää gui domain:insta (Peli.java)
+	+ JavaDoc lisätty domain ja tyokalut -paketteihin
 * Testaus
-	+ Lausekattavuus liian alhainen, lisää testejä
-	+ Poista testaukset GUI:lta (ei vaadittu->siistimmät raportit)
+	+ Lausekattavuus tyydyttävä. Cobertura ei millään konffaudu raportoimaan vain muutamaa pakettia vaan raportoi koko projektin tai ei mitään.
 * Pelimekaniikan tarkistukset ja säädöt
-	+ Tarkista palkat
-	+ Tarkista verottajan ilmestyminen
-	+ Implementoi rakennustarkastaja
-	+ Tarkista työmaalta saatava palkkio
+	+ Tarkista palkat, CHECK
+	+ Tarkista verottajan ilmestyminen, CHECK
+	+ Implementoi rakennustarkastaja, CHECK
+	+ Tarkista työmaalta saatava palkkio, CHECK
 * Tekoäly (jos jotenkin ihmeesti aikaa jää)
-	+ Työmaille arvotaan katuosoite
-	+ Työntekijöille arvotaan nimi
+	+ Työmaille arvotaan katuosoite, JOS AIKAA JÄÄ
+	+ Työntekijöille arvotaan nimi, JOS AIKAA JÄÄ
 
 
