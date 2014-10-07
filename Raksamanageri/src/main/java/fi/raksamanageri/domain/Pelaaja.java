@@ -14,7 +14,7 @@ public class Pelaaja implements java.io.Serializable {
 
     /**
      * Konstruktori ei tarvitse parametreja. Se alustaa pelaajan rahat 10000:een
-     * ja alustaa pelaajan sisäiset muuttujat
+     * ja alustaa luokan sisäiset muuttujat
      */
     public Pelaaja() {
         this.rahaMaara = ALKURAHA;
@@ -42,7 +42,8 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Metodi lisää pelaajalle työntekijän
+     * Metodi lisää pelaajalle työntekijän. Tyontekijää ei sijoiteta tässä
+     * operaatiossa millekään työmaalle
      *
      * @param tyontekija lisättävä Työntekijä-luokan olio
      */
@@ -51,7 +52,7 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Metodi poistaa pelaajalta työntekijän, mikäli semmoinen on.
+     * Metodi poistaa pelaajalta työntekijän, mikäli semmoinen on
      *
      * @param tyontekija poistettava työntekijä
      *
@@ -67,7 +68,8 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Antaa pelaajan kaikki työntekijät ArrayList-muodossa
+     * Antaa pelaajan kaikki työntekijät ArrayList-muodossa, jonka solut
+     * ovat Tyontekija-luokan instansseja
      *
      * @return työntekijät
      */
@@ -78,14 +80,15 @@ public class Pelaaja implements java.io.Serializable {
     /**
      * Metodilla lisätään pelaajalle työmaa, johon voi sijoittaa työntekijöitä
      *
-     * @param maa lisättä Työmaa
+     * @param maa lisättävä Työmaa
      */
     public void lisääTyomaa(Tyomaa maa) {
         this.tyomaat.add(maa);
     }
 
     /**
-     * Palauttaa kaikki pelaajan työmaat ArrayListin muodossa
+     * Palauttaa kaikki pelaajan työmaat ArrayList-muodossa, jonka solut 
+     * ovat Tyomaa-luokan instansseja
      *
      * @return työmaat
      */
@@ -94,7 +97,9 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Pelaajan työmaiden listasta poistetaan parametrina saatu työmaa
+     * Pelaajan työmaiden listasta poistetaan argumenttina saatu työmaa.
+     * Mikäli pelaajalla ei ole annettua työmaata omalla työmaa-listallaan
+     * metodi ei tee mitään
      *
      * @param maa poistettava työmaa
      */
@@ -105,7 +110,7 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Metodilla lisätään työntekijä työmaalle
+     * Metodilla lisätään työntekijä työmaalle. 
      *
      * @param tt työmaalle lisättävä työntekijä
      * @param tm työmaa jonne työntekijä lisätään
@@ -116,7 +121,7 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Metodilla poistetaan työntekijä työmaalta
+     * Metodilla poistetaan työntekijä työmaalta. 
      *
      * @param tt työntekijä, joka poistetaan työmaalta
      * @param tm työmaa, josta työntekijä poistetaan
@@ -127,15 +132,20 @@ public class Pelaaja implements java.io.Serializable {
     }
 
     /**
-     * Päivittää pelaajan tiedot ja siirtyy seuraavaan vuoroon: 1. Pelaajan
-     * rahoista vähennetään työntekijöiden palkat 2. Pelaajan työmaiden
-     * edistymiset päivitetään
+     * Päivittää pelaajan tiedot ja siirtyy seuraavaan vuoroon: 
+     * 1. Pelaajan rahoista vähennetään työntekijöiden palkat 
+     * 2. Pelaajan työmaiden edistymiset päivitetään
      */
     public void seuraavaVuoro() {
         laskePalkat();
         paivitaTyomaat();
     }
 
+    /**
+     * Yksityinen metodi joka käy pelaajan työntekijät läpi ja summaa
+     * jokaisen työntekijän palkan yhteen. Kokonaissumma vähennetään
+     * pelaajan rahoista.
+     */
     private void laskePalkat() {
         int palkat = 0;
         for (Tyontekija t : this.tyonTekijat) {
@@ -144,6 +154,15 @@ public class Pelaaja implements java.io.Serializable {
         muutaRahamaaraa(-palkat);
     }
 
+    /**
+     * Yksityinen metodi joka päivittää pelaajan työmaat:
+     * 1. Käydään työmaat yksitellen läpi
+     * 2. Jokaisen työmaan kohdalla kutsutaan työmaan seuraavaVuoro-metodia
+     * 3. Jos työmaa tulee valmiiksi:
+     * 3a. Lisätään työmaan palkkio pelaajalle
+     * 3b. Työmaalta poistetaan pelaajan työntekijät
+     * 3c. Tyomaa poistetaan pelaajan listoilta
+     */
     private void paivitaTyomaat() {
         for (int i = 0; i < this.tyomaat.size(); i++) {
             Tyomaa maa = this.tyomaat.get(i);

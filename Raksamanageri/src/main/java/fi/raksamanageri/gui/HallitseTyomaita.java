@@ -3,6 +3,8 @@ package fi.raksamanageri.gui;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyomaa;
 import fi.raksamanageri.domain.Tyontekija;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 public class HallitseTyomaita extends javax.swing.JFrame {
     
@@ -303,6 +305,11 @@ public class HallitseTyomaita extends javax.swing.JFrame {
         } else {
             alustaTyomaa(--this.tyomaaIndeksi);
         }
+        
+        JOptionPane.showMessageDialog(null, "Työmaan poistamisesta kertyy "
+                + "sakkoa 2000, joka peritään välittömästi!", "Työmaan poisto",
+                WARNING_MESSAGE);
+        this.peli.getPelaaja().muutaRahamaaraa(-2000);
     }//GEN-LAST:event_button_jataTyomaaActionPerformed
 
     /**

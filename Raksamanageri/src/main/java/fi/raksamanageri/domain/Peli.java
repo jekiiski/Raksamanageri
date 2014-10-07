@@ -1,14 +1,14 @@
 package fi.raksamanageri.domain;
 
-import fi.raksamanageri.logiikka.SatunnaisGeneraattori;
-import fi.raksamanageri.logiikka.Tiedostonkasittelija;
+import fi.raksamanageri.tyokalut.SatunnaisGeneraattori;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
- * Peli sisältää peliä pelaavan pelaajan tiedot, uudet työntekijät sekä
- * uudet työmaat.
+ * Peli sisältää peliä pelaavan pelaajan tiedot, pelitilanteen, 
+ * uudet työntekijät sekä uudet työmaat. 
  */
 public class Peli implements java.io.Serializable {
 
@@ -21,7 +21,11 @@ public class Peli implements java.io.Serializable {
     private ArrayList<Patevyys> patevyydet;
 
     /**
-     * Konstruktori ei tarvitse parametreja. Tässä alustetaan peli ja sen muuttujat
+     * Konstruktori ei tarvitse parametreja. 
+     * Muuttujien alustus:
+     * 1. Luodaan uusi pelaaja
+     * 2. Asetetaan voitto ja vararikko tilaan false
+     * 3. Alustetaan työntekijöiden ja työmaiden listat
      */
     public Peli() {
         this.pelaaja = new Pelaaja();
@@ -31,11 +35,12 @@ public class Peli implements java.io.Serializable {
         this.vapaatTyontekijat = new ArrayList<Tyontekija>();
         this.sk = new SatunnaisGeneraattori();
         
-        // alustetaan pätevyydet, vakiona 3 erilaista
-        this.patevyydet = new ArrayList<Patevyys>();
-        this.patevyydet.add(new Patevyys("Sähkö"));
-        this.patevyydet.add(new Patevyys("Putki"));
-        this.patevyydet.add(new Patevyys("Julkisivu"));
+        // Tässä versiossa pätevyyksiä ei vielä käytetä!
+//        // alustetaan pätevyydet, vakiona 3 erilaista
+//        this.patevyydet = new ArrayList<Patevyys>();
+//        this.patevyydet.add(new Patevyys("Sähkö"));
+//        this.patevyydet.add(new Patevyys("Putki"));
+//        this.patevyydet.add(new Patevyys("Julkisivu"));
     }
 
     /**
@@ -122,42 +127,26 @@ public class Peli implements java.io.Serializable {
     }
 
     /**
-     * Metodi päivittää peli-luokan seuraavan vuoron. 
-     * 1. Päivitetään pelaajan työmaat
-     * 2. Kutsutaan pelaajan seuraavaVuoro()-metodia
+     * Metodi päivittää peli-luokan seuraavan vuoron:
+     * 1. Arvotaan käykö rakennustarkastaja
+     * 1a. Jos käy niin lisätään työmaan laajuutta
+     * 2. Arvotaan käykö verotarkastaja
+     * 2a. Jos käy niin langetetaan jälkivero
+     * 3. Luodaan 3 kpl uusia työmaita ja työntekijöitä
+     * 4. Kutsutaan pelaajan seuraavaVuoro-metodia
+     * 5. Tarkistetaan onko vararikko tai voitto
      * 
      * @see Pelaaja.seuraavaVuoro()
      */
     public void seuraavaVuoro() {
         // Rakennustarkastajan käynti
-        // IMPLEMENTOINTI KESKEN
         if (this.sk.rakennustarkastajaKylaan()) {
-            for (Tyomaa t : this.pelaaja.annaTyomaat()) {
-                if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
-                    int lisaTyot = t.getLaajuus() / 3;
-                    JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
-                            + " ulkomaiset työntekijä ovat tehneet niin huonoa "
-                            + "työtä, että rakennustarkastaja määrää sinut "
-                            + "teettämään " + lisaTyot + " yksikön verran lisää "
-                            + "töitä",
-                            "Rakannustarkastajan tarkastus", WARNING_MESSAGE);
-                    t.lisaaLaajuutta(lisaTyot);
-                }
-            }
+            lisaaLaajuuttaHuonostaTyonjaljesta();
         }
         
         // verottajan käynti
         if (this.sk.verottajanTarkastus()) {
-            for (Tyomaa t : this.pelaaja.annaTyomaat()) {
-                if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
-                    int sakko = t.getLaajuus() * 30;
-                    JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
-                            + " et ole maksanut veroja ainakaan yhdeltä työntekijältä. "
-                            + "Verottaja määrää sinulle veromätkyjä " + sakko,
-                            "Verottajan tarkastus", WARNING_MESSAGE);
-                    this.pelaaja.muutaRahamaaraa(-sakko);
-                }
-            }
+            verotaUlkomaisistaTyontekijoista();
         }
         
         // uusien työmaiden generointi, vanhat poistetaan
@@ -174,19 +163,72 @@ public class Peli implements java.io.Serializable {
         
         this.pelaaja.seuraavaVuoro();
         
-        
-        // GUI ilmoittaa pelaajalle vararikosta ja voitosta
-        if (this.pelaaja.annaRahamaara() < 0) {
+        // päivitetään booleanmuuttujat
+        if (this.pelaaja.annaRahamaara() <= -1) {
             this.vararikko = true;
-        } else if (this.pelaaja.annaRahamaara() > 1000000) {
+        } else if (this.pelaaja.annaRahamaara() >= 1000000) {
             this.voitto = true;
         }
     }
+
+    /**
+     * Yksityinen metodi jossa arvotaan sakko joka vähennetään pelaajalta. 
+     * Tähän metodiin tulisi tulla vain seuraavaVuoro-metodin kautta
+     * 
+     * @see Peli.seuraavaVuoro()
+     * 
+     * @throws HeadlessException Koska käsittelee JOptionPane.showMessageDialog
+     */
+    private void verotaUlkomaisistaTyontekijoista() throws HeadlessException {
+        for (Tyomaa t : this.pelaaja.annaTyomaat()) {
+            if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
+                int sakko = t.getLaajuus() * 30;
+                JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                        + " et ole maksanut veroja ainakaan yhdeltä työntekijältä. "
+                        + "Verottaja määrää sinulle veromätkyjä " + sakko,
+                        "Verottajan tarkastus", WARNING_MESSAGE);
+                this.pelaaja.muutaRahamaaraa(-sakko);
+            }
+        }
+    }
+
+    /**
+     * Yksityine metodi, jossa arvotaan lisätyön määrä joka lisätään pelaajan
+     * työmaalle. Tähän metodiin tulisi tulla vain seuraavaVuoro-metodin kautta
+     * 
+     * @see Peli.seuraavaVuoro()
+     * 
+     * @throws HeadlessException Koska käsittelee JOptionPane.showMessageDialog
+     */
+    private void lisaaLaajuuttaHuonostaTyonjaljesta() throws HeadlessException {
+        for (Tyomaa t : this.pelaaja.annaTyomaat()) {
+            if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
+                int lisaTyot = t.getLaajuus() / 3;
+                JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                        + " ulkomaiset työntekijä ovat tehneet niin huonoa "
+                        + "työtä, että rakennustarkastaja määrää sinut "
+                        + "teettämään " + lisaTyot + " yksikön verran lisää "
+                        + "töitä",
+                        "Rakannustarkastajan tarkastus", WARNING_MESSAGE);
+                t.lisaaLaajuutta(lisaTyot);
+            }
+        }
+    }
     
+    /**
+     * Mikäli pelaaja on saanut kasaan 1000000 rahayksikköä peli on voitettu
+     * 
+     * @return voitto 
+     */
     public boolean onkoVoitettu() {
         return this.voitto;
     }
     
+    /**
+     * Mikäli pelaajan rahat loppuvat, peli on hävitty
+     * 
+     * @return häviö
+     */
     public boolean onkoHavittu() {
         return this.vararikko;
     }

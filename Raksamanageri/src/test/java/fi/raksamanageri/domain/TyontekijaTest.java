@@ -24,12 +24,12 @@ public class TyontekijaTest {
     
     @Test
     public void kotimainenTyontekijaKonstruktorissaOikeaPalkka() {
-        assertEquals(this.koti.getPalkka(), 1000);
+        assertEquals(this.koti.getPalkka(), 400);
     }
     
     @Test
     public void ulkomoinenTyontekijaKonstruktorissaOikeaPalkka() {
-        assertEquals(this.ulko.getPalkka(), 400);
+        assertEquals(this.ulko.getPalkka(), 300);
     }
     
     @Test
@@ -47,13 +47,13 @@ public class TyontekijaTest {
     @Test
     public void palkkaEiVoiOllaNegatiivinen() {
         this.koti.setPalkka(-100);
-        assertEquals(this.koti.getPalkka(), 1000);
+        assertEquals(this.koti.getPalkka(), 400);
     }
     
     @Test
     public void palkkaEiVoiOllaNolla() {
         this.ulko.setPalkka(0);
-        assertEquals(this.ulko.getPalkka(), 400);
+        assertEquals(this.ulko.getPalkka(), 300);
     }
     
     @Test
@@ -106,13 +106,13 @@ public class TyontekijaTest {
     
     @Test
     public void toStringMetodiToimiiHalutustiKotimaisella() {
-        String s = "Kotimainen työntekijä, palkka: 1000, työteho: 10";
+        String s = "Kotimainen työntekijä, palkka: 400, työteho: 10";
         assertEquals(this.koti.toString(), s);
     }
     
     @Test
     public void toStringMetodiToimiiHalutustiUlkomaisella() {
-        String s = "Ulkomainen työntekijä, palkka: 400, työteho: 8";
+        String s = "Ulkomainen työntekijä, palkka: 300, työteho: 8";
         assertEquals(this.ulko.toString(), s);
     }
     
@@ -125,7 +125,7 @@ public class TyontekijaTest {
     @Test
     public void patevyydenLisaysNostaaPalkkaa() {
         this.koti.lisaaPatevyys(new Patevyys("koe"));
-        assertEquals(this.koti.getPalkka(), 1100);
+        assertEquals(this.koti.getPalkka(), 500);
     }
     
     @Test
@@ -135,6 +135,8 @@ public class TyontekijaTest {
         assertEquals(this.koti.missaToissa(), t);
     }
     
-    
-
+    @Test
+    public void nimiOnOikein() {
+        assertEquals(this.koti.getNimi(), "");
+    }
 }

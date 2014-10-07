@@ -48,7 +48,7 @@ public class TyomaaTest {
     
     @Test
     public void palkkioAlittaaYlarajan() {
-        int raja = t.getPalkkio() - (t.getLaajuus()+10)*40;
+        int raja = t.getPalkkio() - (t.getLaajuus()+14)*60;
         boolean ok = false;
         if (raja <= 0) {
             ok = true;
@@ -146,5 +146,13 @@ public class TyomaaTest {
         int nykyinenPalkkio = this.t.getPalkkio();
         this.t.setPalkkio(-1);
         assertNotSame(t.getPalkkio(), nykyinenPalkkio);
+    }
+    
+    @Test
+    public void toStringToimiiOikein() {
+        String tulos = "Tyomaa, laajuus: " + this.t.getLaajuus() + ", tehty: "
+                + this.t.getValmiina() + ", palkkio: " + this.t.getPalkkio()
+                + " käytetty kotimaista: " + this.t.onkoKaytettyVainKotimaisiaTyontekijoita();
+        assertEquals(tulos, this.t.toString());
     }
 }

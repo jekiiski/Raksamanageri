@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.raksamanageri.logiikka;
+package fi.raksamanageri.tyokalut;
 
 import fi.raksamanageri.domain.Peli;
 import java.io.File;
@@ -16,11 +16,19 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
+ * Lataa ja tallentaa raksamanagerin pelin
  *
- * @author eikkari
  */
 public class Tiedostonkasittelija {
 
+    /**
+     * Tallentaa peli-argumentin pelin annettuun tiedostoon
+     * 
+     * @param tallennettava tiedosto johon peli tallennetaan
+     * @param peli tallennettava peli
+     * 
+     * @return onnistuiko tallennus
+     */
     public boolean tallennaPeli(File tallennettava, Peli peli) {
         try {
             FileOutputStream fileOut
@@ -37,6 +45,14 @@ public class Tiedostonkasittelija {
         return true;
     }
 
+    /**
+     * Yrittää ladata ladattava-argumentin osoittaman tiedoston ja palauttaa
+     * siitä pelin
+     * 
+     * @param ladattava (tallennus)tiedosto josta peli ladataan
+     * 
+     * @return onnistuiko lataus 
+     */
     public Peli lataaPeli(File ladattava) {
         Peli p = null;
         try {

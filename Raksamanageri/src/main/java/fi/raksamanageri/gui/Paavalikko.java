@@ -1,7 +1,7 @@
 package fi.raksamanageri.gui;
 
 import fi.raksamanageri.domain.Peli;
-import fi.raksamanageri.logiikka.Tiedostonkasittelija;
+import fi.raksamanageri.tyokalut.Tiedostonkasittelija;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -49,8 +49,6 @@ public class Paavalikko extends javax.swing.JFrame {
         button_tallennaJaLopeta = new javax.swing.JButton();
         button_lopeta = new javax.swing.JButton();
         button_seuraavaVuoro = new javax.swing.JButton();
-        label_staticStatus = new javax.swing.JLabel();
-        label_pelinStatus = new javax.swing.JLabel();
         label_staticRahaa = new javax.swing.JLabel();
         label_pelaajanRahat = new javax.swing.JLabel();
         label_staticTyontekijoita = new javax.swing.JLabel();
@@ -118,12 +116,6 @@ public class Paavalikko extends javax.swing.JFrame {
             }
         });
 
-        label_staticStatus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_staticStatus.setText("Status");
-
-        label_pelinStatus.setText("Uusi peli aloitettu");
-        label_pelinStatus.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
         label_staticRahaa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_staticRahaa.setText("Rahaa");
 
@@ -150,31 +142,27 @@ public class Paavalikko extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_pelinStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_staticStatus)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(button_hallitseTyontekijoita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(button_palkkaaTyontekijoita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(196, 196, 196))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_staticRahaa)
-                                            .addComponent(label_pelaajanRahat))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_staticTyontekijoita)
-                                            .addComponent(label_pelaajallaTyontekijoita))
-                                        .addGap(90, 90, 90)))
+                                    .addComponent(button_hallitseTyontekijoita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(button_palkkaaTyontekijoita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(196, 196, 196))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_pelaajanTyomaidenMaara)
-                                    .addComponent(label_staticAloitettujaTyomaita)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(button_etsiTyomaita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(button_hallitseTyomaita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(label_staticRahaa)
+                                    .addComponent(label_pelaajanRahat))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_staticTyontekijoita)
+                                    .addComponent(label_pelaajallaTyontekijoita))
+                                .addGap(90, 90, 90)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_pelaajanTyomaidenMaara)
+                            .addComponent(label_staticAloitettujaTyomaita)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(button_etsiTyomaita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(button_hallitseTyomaita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 113, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -206,11 +194,7 @@ public class Paavalikko extends javax.swing.JFrame {
                     .addComponent(label_pelaajanRahat)
                     .addComponent(label_pelaajallaTyontekijoita)
                     .addComponent(label_pelaajanTyomaidenMaara))
-                .addGap(80, 80, 80)
-                .addComponent(label_staticStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_pelinStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_seuraavaVuoro)
                     .addComponent(button_tallennaJaLopeta)
@@ -336,10 +320,8 @@ public class Paavalikko extends javax.swing.JFrame {
     private javax.swing.JLabel label_pelaajallaTyontekijoita;
     private javax.swing.JLabel label_pelaajanRahat;
     private javax.swing.JLabel label_pelaajanTyomaidenMaara;
-    private javax.swing.JLabel label_pelinStatus;
     private javax.swing.JLabel label_staticAloitettujaTyomaita;
     private javax.swing.JLabel label_staticRahaa;
-    private javax.swing.JLabel label_staticStatus;
     private javax.swing.JLabel label_staticTyontekijoita;
     // End of variables declaration//GEN-END:variables
 }

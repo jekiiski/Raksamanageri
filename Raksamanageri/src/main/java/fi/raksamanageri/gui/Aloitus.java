@@ -1,7 +1,7 @@
 package fi.raksamanageri.gui;
 
 import fi.raksamanageri.domain.Peli;
-import fi.raksamanageri.logiikka.Tiedostonkasittelija;
+import fi.raksamanageri.tyokalut.Tiedostonkasittelija;
 import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JFileChooser;

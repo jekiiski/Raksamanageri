@@ -32,15 +32,15 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
                     <instrumentation>
-                        <includes>
-                            <include>fi.raksamanageri.logiikka/*.class</include>
-                            <include>fi.raksamanageri.domain/*.class</include>
-                        </includes>
+                        <ignores>
+                            <ignore>fi.raksamanageri.gui.*</ignore>
+                            <ignore>fi/raksamanageri/gui/*.class</ignore>
+                        </ignores>
                     </instrumentation>
                 </configuration>
-                <version>2.6</version>
             </plugin>
             <plugin>
                 <groupId>org.pitest</groupId>

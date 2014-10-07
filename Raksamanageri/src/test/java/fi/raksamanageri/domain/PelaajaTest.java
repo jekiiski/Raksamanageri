@@ -92,7 +92,7 @@ public class PelaajaTest {
     public void palkatLasketaanOikeinKunTyontekijoita() {
         p.lisaaTyontekija(new Tyontekija(true, ""));
         p.seuraavaVuoro();
-        assertEquals(p.annaRahamaara(), 9000);
+        assertEquals(p.annaRahamaara(), 9600);
     }
     
     @Test
