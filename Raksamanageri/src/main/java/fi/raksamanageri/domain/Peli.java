@@ -189,7 +189,7 @@ public class Peli implements java.io.Serializable {
      * 
      * @return viesti jossa kerrotaan veromätkyistä
      */
-    private String verotaUlkomaisistaTyontekijoista() throws HeadlessException {
+    private String verotaUlkomaisistaTyontekijoista() {
         String ulos = "";
         for (Tyomaa t : this.pelaaja.annaTyomaat()) {
             if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
@@ -211,7 +211,7 @@ public class Peli implements java.io.Serializable {
      * 
      * @return viesti, jossa kerrotaan työmaan laajuuden lisäämisestä
      */
-    private String lisaaLaajuuttaHuonostaTyonjaljesta() throws HeadlessException {
+    private String lisaaLaajuuttaHuonostaTyonjaljesta() {
         String ulos = "";
         for (Tyomaa t : this.pelaaja.annaTyomaat()) {
             if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
