@@ -138,15 +138,23 @@ public class Peli implements java.io.Serializable {
      * 
      * @see Pelaaja.seuraavaVuoro()
      */
-    public void seuraavaVuoro() {
+    public ArrayList<String> seuraavaVuoro() {
+        ArrayList<String> ulos = new ArrayList<String>();
+        
         // Rakennustarkastajan käynti
         if (this.sk.rakennustarkastajaKylaan()) {
-            lisaaLaajuuttaHuonostaTyonjaljesta();
+            String r = lisaaLaajuuttaHuonostaTyonjaljesta();
+            if (!r.isEmpty()) {
+                ulos.add(r);
+            }
         }
         
         // verottajan käynti
         if (this.sk.verottajanTarkastus()) {
-            verotaUlkomaisistaTyontekijoista();
+            String v = verotaUlkomaisistaTyontekijoista();
+            if (!v.isEmpty()) {
+                ulos.add(v);
+            }
         }
         
         // uusien työmaiden generointi, vanhat poistetaan
@@ -169,6 +177,8 @@ public class Peli implements java.io.Serializable {
         } else if (this.pelaaja.annaRahamaara() >= 1000000) {
             this.voitto = true;
         }
+        
+        return ulos;
     }
 
     /**
@@ -177,19 +187,20 @@ public class Peli implements java.io.Serializable {
      * 
      * @see Peli.seuraavaVuoro()
      * 
-     * @throws HeadlessException Koska käsittelee JOptionPane.showMessageDialog
+     * @return viesti jossa kerrotaan veromätkyistä
      */
-    private void verotaUlkomaisistaTyontekijoista() throws HeadlessException {
+    private String verotaUlkomaisistaTyontekijoista() throws HeadlessException {
+        String ulos = "";
         for (Tyomaa t : this.pelaaja.annaTyomaat()) {
             if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
                 int sakko = t.getLaajuus() * 30;
-                JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                ulos = "Työmaalla " + t.getNimi()
                         + " et ole maksanut veroja ainakaan yhdeltä työntekijältä. "
-                        + "Verottaja määrää sinulle veromätkyjä " + sakko,
-                        "Verottajan tarkastus", WARNING_MESSAGE);
+                        + "Verottaja määrää sinulle veromätkyjä " + sakko;
                 this.pelaaja.muutaRahamaaraa(-sakko);
             }
         }
+        return ulos;
     }
 
     /**
@@ -198,21 +209,22 @@ public class Peli implements java.io.Serializable {
      * 
      * @see Peli.seuraavaVuoro()
      * 
-     * @throws HeadlessException Koska käsittelee JOptionPane.showMessageDialog
+     * @return viesti, jossa kerrotaan työmaan laajuuden lisäämisestä
      */
-    private void lisaaLaajuuttaHuonostaTyonjaljesta() throws HeadlessException {
+    private String lisaaLaajuuttaHuonostaTyonjaljesta() throws HeadlessException {
+        String ulos = "";
         for (Tyomaa t : this.pelaaja.annaTyomaat()) {
             if (!t.onkoKaytettyVainKotimaisiaTyontekijoita()) {
                 int lisaTyot = t.getLaajuus() / 3;
-                JOptionPane.showMessageDialog(null, "Työmaalla " + t.getNimi()
+                ulos = "Työmaalla " + t.getNimi()
                         + " ulkomaiset työntekijä ovat tehneet niin huonoa "
                         + "työtä, että rakennustarkastaja määrää sinut "
                         + "teettämään " + lisaTyot + " yksikön verran lisää "
-                        + "töitä",
-                        "Rakannustarkastajan tarkastus", WARNING_MESSAGE);
+                        + "töitä";
                 t.lisaaLaajuutta(lisaTyot);
             }
         }
+        return ulos;
     }
     
     /**

@@ -3,9 +3,11 @@ package fi.raksamanageri.gui;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.tyokalut.Tiedostonkasittelija;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 public class Paavalikko extends javax.swing.JFrame {
     
@@ -243,8 +245,19 @@ public class Paavalikko extends javax.swing.JFrame {
     }//GEN-LAST:event_button_etsiTyomaitaActionPerformed
 
     private void button_seuraavaVuoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaVuoroActionPerformed
-        // TODO add your handling code here:
-        this.peli.seuraavaVuoro();
+        // viestit sisältää rakennustarkastajan ja verottajan viestit
+        // jostka tulostetaan JOptionPane:lla
+        
+        ArrayList<String> viestit = this.peli.seuraavaVuoro();
+        
+        if (!viestit.isEmpty()) {
+            for (String s : viestit) {
+                JOptionPane.showMessageDialog(null, s.toString(),
+                        "Hups", WARNING_MESSAGE);
+            }
+            
+        }
+        
         updatePaavalikko();
         
         if (this.peli.onkoVoitettu()) {

@@ -45,3 +45,5 @@
 6.10  4h JavaDoc domain ja työkalu -paketeilla
 
 7.10  8h Coberturan säätöä, testien lausekattavuus >90%, mutantteja jää jatkuvasti. Poistettu tekstikäyttöliittymä. GUI:sta poistettu status-bar. Pätevyydet poistettu käytöstä, lisätään jos aikaa jää.
+
+8.10  2h Koodia siistitty, domain-paketissa ei enää GUI:in liittyvää koodia (JOptionPane)
