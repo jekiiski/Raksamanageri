@@ -49,11 +49,11 @@
                 <configuration>
                     <targetClasses>
                         <param>fi.raksamanageri.domain.*</param>
-                        <param>fi.raksamanageri.logiikka.*</param>
+                        <param>fi.raksamanageri.tyokalut.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>fi.raksamanageri.domain.*</param>
-                        <param>fi.raksamanageri.logiikka.*</param>
+                        <param>fi.raksamanageri.tyokalut.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
