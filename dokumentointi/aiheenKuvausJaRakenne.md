@@ -4,11 +4,11 @@
 
 Pelissä pelaaja saa perinnöksi rahaa, jolla pelaaja perustaa rakennusyrityksen. Pelaajan tavoitteena on saada alkupääoma kasvamaan miljoonaan rahayksikköön. Yrityksensä omistajana pelaajan tulee palkata itselleen työvoimaa joka työskentelee pelaajan valitsemilla työmailla. Työtehtäviä ilmestyy satunnaisesti pelaajalle valittavaksi.
 
-Pelaaja voi palkata työvoimaksi paikallista työvoimaa tai ulkomaista työvoimaa. Ulkoimainen työvoima on halvempaa, sillä he eivät maksa veroja mutta toisaalta he eivät ole yhtä tehokkaita ja tekevät virheitä työmailla.
+Pelaaja voi palkata työvoimaksi paikallista työvoimaa tai ulkomaista työvoimaa. Ulkomainen työvoima on halvempaa, sillä he eivät maksa veroja. Kuitenkin he ovat tehokkaampia mutta tekevät huonompaa työjälkeä.
 
 Koska pelissä voi kiertää veroja, voi verotarkastaja mätkäistä pelaajalle lisäveron ulkomaisen työvoiman käytöstä. Samaten rakennustarkastaja voi määrätä osan työmaasta uudelleentehtäväksi ulkomaisesta työvoimasta johtuen.
 
-**Käyttäjät:** Pelaaja, Tekoäly
+**Käyttäjät:** Pelaaja, Peli
 
 **Pelaajan toiminnot:**
 
@@ -27,7 +27,7 @@ Koska pelissä voi kiertää veroja, voi verotarkastaja mätkäistä pelaajalle 
  * Työmaan voi jättää kesken sakkoa vastaan
 * Tallenna peli
 
-**Tekoälyn toiminnot:**
+**Pelin toiminnot:**
 
 * Generoi uusi työtehtävä
 * Generoi uusi työntekijä
