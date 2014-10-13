@@ -1,7 +1,5 @@
 package fi.raksamanageri.domain;
 
-import java.util.ArrayList;
-
 /**
  * Luokka kuvaa työmaalla työskentelevää työntekijää, jonka palkan maksaa pelaaja
  * @author eikkari
@@ -11,7 +9,6 @@ public class Tyontekija implements java.io.Serializable {
     private int palkka;
     private final boolean kotimainen;
     private int tyoteho;
-//    private ArrayList patevyydet;
     private Tyomaa tyoMaa;
     private String nimi;
     private static int KOTIMAINEN_PALKKA = 400;
@@ -28,7 +25,6 @@ public class Tyontekija implements java.io.Serializable {
      */
     public Tyontekija(boolean onkoKotimainen, String nimi) {
         this.kotimainen = onkoKotimainen;
-//        this.patevyydet = new ArrayList<Patevyys>();
         this.tyoMaa = null;
         this.nimi = nimi;
 
@@ -40,29 +36,6 @@ public class Tyontekija implements java.io.Serializable {
             this.tyoteho = ULKOMAINEN_TYOTEHO;
         }
     }
-
-//    /**
-//     * Palauttaa työntekijän kaikki pätevyydet
-//     * 
-//     * @return pätevyydet 
-//     */
-//    public ArrayList<Patevyys> annaPatevyydet() {
-//        return this.patevyydet;
-//    }
-
-//    /**
-//     * Metodilla lisätään työntekijälle pätevyys. Jokainen lisäys nostaa työntekijän
-//     * palkkaa.
-//     * 
-//     * @param patevyys lisättävä pätevyys 
-//     */
-//    public void lisaaPatevyys(Patevyys patevyys) {
-//        if (!this.patevyydet.contains(patevyys)) {
-//            this.patevyydet.add(patevyys);
-//            this.tyoteho++;
-//            this.palkka += 100;
-//        }
-//    }
 
     /**
      * Palauttaa työntekijän vaatiman palkan

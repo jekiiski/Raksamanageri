@@ -1,10 +1,7 @@
 package fi.raksamanageri.domain;
 
 import fi.raksamanageri.tyokalut.SatunnaisGeneraattori;
-import java.awt.HeadlessException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  * Peli sisältää peliä pelaavan pelaajan tiedot, pelitilanteen, 
@@ -18,7 +15,6 @@ public class Peli implements java.io.Serializable {
     private ArrayList<Tyomaa> vapaatTyomaat;
     private ArrayList<Tyontekija> vapaatTyontekijat;
     private SatunnaisGeneraattori sk;
-//    private ArrayList<Patevyys> patevyydet;
 
     /**
      * Konstruktori ei tarvitse parametreja. 
@@ -34,13 +30,6 @@ public class Peli implements java.io.Serializable {
         this.vapaatTyomaat = new ArrayList<Tyomaa>();
         this.vapaatTyontekijat = new ArrayList<Tyontekija>();
         this.sk = new SatunnaisGeneraattori();
-        
-        // Tässä versiossa pätevyyksiä ei vielä käytetä!
-//        // alustetaan pätevyydet, vakiona 3 erilaista
-//        this.patevyydet = new ArrayList<Patevyys>();
-//        this.patevyydet.add(new Patevyys("Sähkö"));
-//        this.patevyydet.add(new Patevyys("Putki"));
-//        this.patevyydet.add(new Patevyys("Julkisivu"));
     }
 
     /**
