@@ -18,7 +18,7 @@ public class Peli implements java.io.Serializable {
     private ArrayList<Tyomaa> vapaatTyomaat;
     private ArrayList<Tyontekija> vapaatTyontekijat;
     private SatunnaisGeneraattori sk;
-    private ArrayList<Patevyys> patevyydet;
+//    private ArrayList<Patevyys> patevyydet;
 
     /**
      * Konstruktori ei tarvitse parametreja. 

@@ -3,6 +3,10 @@ package fi.raksamanageri.gui;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyontekija;
 
+/**
+ * Graafinen käyttöliittymä työntekijöiden palkkaamiseen
+ */
+
 public class PalkkaaTyontekijoita extends javax.swing.JFrame {
 
     private Peli peli;
@@ -10,6 +14,12 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
     private Tyontekija valittuTyontekija;
     private int tyontekijaIndeksi;
 
+    /**
+     * Muuttujien alustus
+     * 
+     * @param p Peli
+     * @param v Paavalikko
+     */
     public PalkkaaTyontekijoita(Peli p, Paavalikko v) {
         this.peli = p;
         this.valikko = v;
@@ -24,6 +34,11 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Asettaa työntekijän tiedot näytölle
+     * 
+     * @param indeksi Pelin vapaiden työntekijöiden ArrayList indeksi 
+     */
     private void alustaLomake(int indeksi) {
         // valitaan ensimmäinen työntekijä
         this.valittuTyontekija = this.peli.getVapaatTyontekijat().get(indeksi);
@@ -58,6 +73,9 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Pelissä ei ole vapaita työntekijöitä, aseta tiedot sen mukaisesti
+     */
     private void alustaEiTyontekijoita() {
         this.label_tyontekijanJarjestysNumero.setText("Ei työntekijöitä saatavilla");
         this.label_tyontekijanJarjestysNumero.setForeground(new java.awt.Color(255, 0, 0));
@@ -228,6 +246,9 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilota tämä ikkuna ja aseta Päävalikko näkyville
+     */
     private void button_valmisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valmisActionPerformed
         this.setVisible(false);
         this.valikko.updatePaavalikko();
@@ -235,14 +256,23 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_valmisActionPerformed
 
+    /**
+     * Näytä pelin seuraavan vapaan työntekijän tiedot
+     */
     private void button_seuraavaTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaTyontekijaActionPerformed
         alustaLomake(++this.tyontekijaIndeksi);
     }//GEN-LAST:event_button_seuraavaTyontekijaActionPerformed
 
+    /**
+     * Näytä pelin edellisen vapaan työntekijän tiedot
+     */
     private void button_edellinenTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edellinenTyontekijaActionPerformed
         alustaLomake(--this.tyontekijaIndeksi);
     }//GEN-LAST:event_button_edellinenTyontekijaActionPerformed
 
+    /**
+     * Palkkaa näkyvillä oleva työntekijä
+     */
     private void button_palkkaaTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_palkkaaTyontekijaActionPerformed
         
         Tyontekija te = this.peli.getVapaatTyontekijat().get(this.tyontekijaIndeksi);
@@ -263,41 +293,6 @@ public class PalkkaaTyontekijoita extends javax.swing.JFrame {
             alustaLomake(--this.tyontekijaIndeksi);
         }
     }//GEN-LAST:event_button_palkkaaTyontekijaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyontekijoita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HallitseTyontekijoita().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_edellinenTyontekija;

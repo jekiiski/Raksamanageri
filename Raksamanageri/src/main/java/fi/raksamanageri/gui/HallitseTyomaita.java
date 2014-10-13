@@ -6,6 +6,10 @@ import fi.raksamanageri.domain.Tyontekija;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
+/**
+ * Graafinen käyttöliittymä työmaiden hallintaan
+ */
+
 public class HallitseTyomaita extends javax.swing.JFrame {
     
     private Peli peli;
@@ -13,21 +17,17 @@ public class HallitseTyomaita extends javax.swing.JFrame {
     private int tyomaaIndeksi;
     private Tyomaa valittuTyomaa;
 
+    /**
+     * Työmaiden hallinnan muuttujien alustaminen
+     * 
+     * @param p Peli
+     * @param v Paavalikko
+     */
     public HallitseTyomaita(Peli p, Paavalikko v) {
         this.peli = p;
         this.valikko = v;
         this.tyomaaIndeksi = 0;
         initComponents();
-        
-//        // debug
-//        this.peli.getPelaaja().lisääTyomaa(new Tyomaa(100, "Roba"));
-//        this.peli.getPelaaja().lisääTyomaa(new Tyomaa(13, "hesa"));
-//        this.peli.getPelaaja().annaTyomaat().get(0).lisaaTyontekija
-//        (new Tyontekija(true, "Pekka"));
-//        this.peli.getPelaaja().annaTyomaat().get(0).lisaaTyontekija
-//        (new Tyontekija(false, "Ahti"));
-        
-        
         if (this.peli.getPelaaja().annaTyomaat().isEmpty()) {
             alustaTyhjaTyomaa();
         } else {
@@ -35,6 +35,9 @@ public class HallitseTyomaita extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Asetetaan tämän ikkunan muutujat, jos pelaajalla ei ole työmaita
+     */
     private void alustaTyhjaTyomaa() {
         this.label_tyomaanJarjestysNumero.setText("Ei työmaita");
         this.label_tyomaanJarjestysNumero.setForeground(new java.awt.Color(255, 0, 0));
@@ -49,6 +52,14 @@ public class HallitseTyomaita extends javax.swing.JFrame {
         this.label_kaytettyUlkomaista.setText("");
     }
     
+    /**
+     * Asetetaan pelaajan työmaiden tiedot näytölle ja samalla navigointi
+     * työmaiden välillä tehdään mahdolliseksi
+     * 
+     * @param indeksi pelaajan työmaiden ArrayList indeksi
+     * 
+     * @see fi.raksamanageri.domain.Pelaaja
+     */
     private void alustaTyomaa(int indeksi) {
         // valitaan ensimmäinen työmaa
         this.valittuTyomaa = this.peli.getPelaaja().annaTyomaat().get(indeksi);
@@ -273,6 +284,11 @@ public class HallitseTyomaita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilotetaan tämä ikkuna ja asetetaan päävalikko näkyville
+     * 
+     * @see fi.raksamanageri.gui.Paavalikko
+     */
     private void button_valmisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valmisActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -281,16 +297,25 @@ public class HallitseTyomaita extends javax.swing.JFrame {
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_valmisActionPerformed
 
+    /**
+     * Kutsutaan alustaTyomaa-metodia seuraavalla indeksillä
+     */
     private void button_seuraavaTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(++this.tyomaaIndeksi);
     }//GEN-LAST:event_button_seuraavaTyomaaActionPerformed
 
+    /**
+     * Kutsutaan alustaTyomaa-metodia edellisellä indeksillä
+     */
     private void button_edellinenTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edellinenTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(--this.tyomaaIndeksi);
     }//GEN-LAST:event_button_edellinenTyomaaActionPerformed
 
+    /**
+     * Poistetaan työmaa pelaajan työmaista ja annetaan pelaajalle sakko
+     */
     private void button_jataTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_jataTyomaaActionPerformed
         // TODO add your handling code here:
         this.peli.getPelaaja().poistaTyomaa

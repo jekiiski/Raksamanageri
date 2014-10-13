@@ -90,19 +90,19 @@ public class TyontekijaTest {
         assertEquals(this.ulko.getTyoteho(), 8);
     }
     
-    @Test
-    public void patevyydenLisaysOnnistuu() {
-        Patevyys p = new Patevyys("sähkö");
-        this.koti.lisaaPatevyys(p);
-        assertEquals(p, this.koti.annaPatevyydet().get(0));
-    }
-    
-    @Test
-    public void useanPatevyydenLisaysToimii() {
-        this.ulko.lisaaPatevyys(new Patevyys("a"));
-        this.ulko.lisaaPatevyys(new Patevyys("k"));
-        assertEquals(this.ulko.annaPatevyydet().size(), 2);
-    }
+//    @Test
+//    public void patevyydenLisaysOnnistuu() {
+//        Patevyys p = new Patevyys("sähkö");
+//        this.koti.lisaaPatevyys(p);
+//        assertEquals(p, this.koti.annaPatevyydet().get(0));
+//    }
+//    
+//    @Test
+//    public void useanPatevyydenLisaysToimii() {
+//        this.ulko.lisaaPatevyys(new Patevyys("a"));
+//        this.ulko.lisaaPatevyys(new Patevyys("k"));
+//        assertEquals(this.ulko.annaPatevyydet().size(), 2);
+//    }
     
     @Test
     public void toStringMetodiToimiiHalutustiKotimaisella() {
@@ -116,17 +116,17 @@ public class TyontekijaTest {
         assertEquals(this.ulko.toString(), s);
     }
     
-    @Test
-    public void patevyydenLisaysNostaaTyotehoa() {
-        this.koti.lisaaPatevyys(new Patevyys("Putki"));
-        assertEquals(this.koti.getTyoteho(), 11);
-    }
-    
-    @Test
-    public void patevyydenLisaysNostaaPalkkaa() {
-        this.koti.lisaaPatevyys(new Patevyys("koe"));
-        assertEquals(this.koti.getPalkka(), 500);
-    }
+//    @Test
+//    public void patevyydenLisaysNostaaTyotehoa() {
+//        this.koti.lisaaPatevyys(new Patevyys("Putki"));
+//        assertEquals(this.koti.getTyoteho(), 11);
+//    }
+//    
+//    @Test
+//    public void patevyydenLisaysNostaaPalkkaa() {
+//        this.koti.lisaaPatevyys(new Patevyys("koe"));
+//        assertEquals(this.koti.getPalkka(), 500);
+//    }
     
     @Test
     public void tyontekijaTietaaMissaOnToissa() {

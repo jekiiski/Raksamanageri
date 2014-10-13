@@ -19,7 +19,7 @@ public class Tyomaa implements java.io.Serializable {
     private ArrayList<Tyontekija> tyontekijat;
     private String nimi;
     private SatunnaisGeneraattori sk;
-    private ArrayList<Patevyys> vaaditutPatevyydet;
+//    private ArrayList<Patevyys> vaaditutPatevyydet;
 
     /**
      * Alustaa työmaan.
@@ -36,32 +36,32 @@ public class Tyomaa implements java.io.Serializable {
         this.nimi = nimi;
         this.sk = new SatunnaisGeneraattori();
         this.palkkio = this.sk.generoiTyomaaPalkkio(this);
-        this.vaaditutPatevyydet = new ArrayList<Patevyys>();
+//        this.vaaditutPatevyydet = new ArrayList<Patevyys>();
 
     }
 
-    /**
-     * Metodilla voidaan työmaalle lisätä vaadittava pätevyys. Työmaalle ei voi
-     * lisätä pätevyyttä joka sillä jo on vaatimuksena
-     *
-     * @param p Lisättävä pätevyys
-     */
-    public void lisaaVaadittavaPatevyys(Patevyys p) {
-        if (!this.vaaditutPatevyydet.contains(p)) {
-            this.vaaditutPatevyydet.add(p);
-        }
-    }
+//    /**
+//     * Metodilla voidaan työmaalle lisätä vaadittava pätevyys. Työmaalle ei voi
+//     * lisätä pätevyyttä joka sillä jo on vaatimuksena
+//     *
+//     * @param p Lisättävä pätevyys
+//     */
+//    public void lisaaVaadittavaPatevyys(Patevyys p) {
+//        if (!this.vaaditutPatevyydet.contains(p)) {
+//            this.vaaditutPatevyydet.add(p);
+//        }
+//    }
 
-    /**
-     * Palauttaa ArrayList-muodossa Patevyys-oliot joita työmaa vaatii
-     * 
-     * @return Pätevyys
-     * 
-     * @see Patevyys
-     */
-    public ArrayList<Patevyys> annaVaaditutPatevyydet() {
-        return this.vaaditutPatevyydet;
-    }
+//    /**
+//     * Palauttaa ArrayList-muodossa Patevyys-oliot joita työmaa vaatii
+//     * 
+//     * @return Pätevyys
+//     * 
+//     * @see Patevyys
+//     */
+//    public ArrayList<Patevyys> annaVaaditutPatevyydet() {
+//        return this.vaaditutPatevyydet;
+//    }
 
     /**
      * Palauttaa int arvon, kuinka paljon työmaasta on valmiina

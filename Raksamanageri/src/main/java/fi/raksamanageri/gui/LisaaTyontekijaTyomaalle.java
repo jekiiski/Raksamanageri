@@ -4,6 +4,9 @@ import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyomaa;
 import fi.raksamanageri.domain.Tyontekija;
 
+/**
+ * Graafinen käyttöliitymä työntekijän lisäämiseen työmaalle
+ */
 public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
     
     private Peli peli;
@@ -12,6 +15,13 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
     private Tyomaa valittuTyomaa;
     private Tyontekija tyontekija;
 
+    /**
+     * Muuttujien alustus
+     * 
+     * @param p Peli
+     * @param v HallitseTyontekijoita (valikko)
+     * @param t Tyontekija
+     */
     public LisaaTyontekijaTyomaalle(Peli p, HallitseTyontekijoita v, Tyontekija t) {
         this.peli = p;
         this.valikko = v;
@@ -26,6 +36,9 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Päivitä tiedot jos työmaita ei ole
+     */
     private void alustaTyhjaTyomaa() {
         this.label_tyomaanJarjestysNumero.setText("Ei työmaita");
         this.label_tyomaanJarjestysNumero.setForeground(new java.awt.Color(255, 0, 0));
@@ -40,6 +53,11 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         this.label_kaytettyUlkomaista.setText("");
     }
     
+    /**
+     * Päivitä tiedot kun työmaita on
+     * 
+     * @param indeksi pelaajan työmaiden ArrayList-indeksi 
+     */
     private void alustaTyomaa(int indeksi) {
         // valitaan ensimmäinen työmaa
         this.valittuTyomaa = this.peli.getPelaaja().annaTyomaat().get(indeksi);
@@ -276,6 +294,9 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilota tämä ikkuna ja aseta HallitseTyöntekijöitä näkyväksi
+     */
     private void button_valmisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valmisActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -283,16 +304,25 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_valmisActionPerformed
 
+    /**
+     * Näytä seuraava työmaan tiedot
+     */
     private void button_seuraavaTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(++this.tyomaaIndeksi);
     }//GEN-LAST:event_button_seuraavaTyomaaActionPerformed
 
+    /**
+     * Näytä edellisen työmaan tiedot
+     */
     private void button_edellinenTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edellinenTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(--this.tyomaaIndeksi);
     }//GEN-LAST:event_button_edellinenTyomaaActionPerformed
 
+    /**
+     * Lisää valittu työntekijä tälle työmaalle
+     */
     private void button_lisaaTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lisaaTyontekijaActionPerformed
         // TODO add your handling code here:
         Tyomaa tm = this.peli.getPelaaja().annaTyomaat().get(this.tyomaaIndeksi);
@@ -316,6 +346,9 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_lisaaTyontekijaActionPerformed
 
+    /**
+     * Poista valittu työntekijä työmaalta
+     */
     private void button_laitaVapaalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_laitaVapaalleActionPerformed
         // TODO add your handling code here:
         
@@ -332,41 +365,6 @@ public class LisaaTyontekijaTyomaalle extends javax.swing.JFrame {
         this.valikko.setLocation(this.getLocation().x, this.getLocation().y);
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_laitaVapaalleActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HallitseTyomaita().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_edellinenTyomaa;

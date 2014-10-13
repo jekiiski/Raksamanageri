@@ -4,6 +4,9 @@ import fi.raksamanageri.domain.Patevyys;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyontekija;
 
+/**
+ * Graafinen käyttöliittymä pelaajan työntekijöiden hallintaan
+ */
 public class HallitseTyontekijoita extends javax.swing.JFrame {
 
     private Peli peli;
@@ -11,6 +14,12 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
     private Tyontekija valittuTyontekija;
     private int tyontekijaIndeksi;
 
+    /**
+     * Muuttujien alustus
+     * 
+     * @param p Peli
+     * @param v Paavaliko
+     */
     public HallitseTyontekijoita(Peli p, Paavalikko v) {
         this.peli = p;
         this.valikko = v;
@@ -19,6 +28,9 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         paivita();
     }
 
+    /**
+     * Päivitetään tiedot riippuen siitä onko pelaajalla työntekijöitä
+     */
     public void paivita() {
         if (this.peli.getPelaaja().annaTyontekijat().isEmpty()) {
             alustaEiTyontekijoita();
@@ -27,6 +39,12 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Asetetaan pelaajan työntekijöiden tiedot näytölle ja samalla navigointi
+     * kuntoon.
+     * 
+     * @param indeksi pelaajan työntekijöiden ArrayList-indeksi
+     */
     private void alustaLomake(int indeksi) {
         // valitaan ensimmäinen työntekijä
         this.valittuTyontekija = this.peli.getPelaaja().annaTyontekijat().get(indeksi);
@@ -70,6 +88,9 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Asetetaan tiedot näytölle kun pelaajalla ei ole työntekijöitä
+     */
     private void alustaEiTyontekijoita() {
         this.label_tyontekijanJarjestysNumero.setText("Ei työntekijöitä");
         this.label_tyontekijanJarjestysNumero.setForeground(new java.awt.Color(255, 0, 0));
@@ -259,12 +280,18 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilota tämä ikkuna ja aseta päävalikko näkyville
+     */
     private void button_valmisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valmisActionPerformed
         this.setVisible(false);
         this.valikko.setLocation(this.getLocation().x, this.getLocation().y);
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_valmisActionPerformed
 
+    /**
+     * Poistaa pelaajalta näytöllä olevan työntekijän
+     */
     private void button_erotaTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_erotaTyontekijaActionPerformed
         this.peli.getPelaaja().poistaTyontekija(this.peli.getPelaaja().annaTyontekijat().get(this.tyontekijaIndeksi));
 
@@ -279,14 +306,23 @@ public class HallitseTyontekijoita extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button_erotaTyontekijaActionPerformed
 
+    /**
+     * Asetetaan seuraavan työntekijän tiedot näytölle
+     */
     private void button_seuraavaTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaTyontekijaActionPerformed
         alustaLomake(++this.tyontekijaIndeksi);
     }//GEN-LAST:event_button_seuraavaTyontekijaActionPerformed
 
+    /**
+     * Asetetaan edellisen työntekijän tiedot näytölle
+     */
     private void button_edellinenTyontekijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edellinenTyontekijaActionPerformed
         alustaLomake(--this.tyontekijaIndeksi);
     }//GEN-LAST:event_button_edellinenTyontekijaActionPerformed
 
+    /**
+     * Piilota tämä näkymä ja aseta LisaaTyontekijaTyomaalle näkyviin
+     */
     private void button_tyoMaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tyoMaaActionPerformed
         // lisää työntekijä työmaalle
         LisaaTyontekijaTyomaalle l = new LisaaTyontekijaTyomaalle(peli, this, valittuTyontekija);

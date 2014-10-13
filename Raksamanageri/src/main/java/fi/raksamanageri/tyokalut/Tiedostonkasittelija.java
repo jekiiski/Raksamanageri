@@ -49,28 +49,17 @@ public class Tiedostonkasittelija {
      * Yrittää ladata ladattava-argumentin osoittaman tiedoston ja palauttaa
      * siitä pelin
      * 
-     * @param ladattava (tallennus)tiedosto josta peli ladataan
+     * @param ladattava tiedosto josta peli ladataan
      * 
-     * @return onnistuiko lataus 
+     * @return Peli tai null jos lataus epäonnistui
      */
-    public Peli lataaPeli(File ladattava) {
+    public Peli lataaPeli(File ladattava) throws Exception {
         Peli p = null;
-        try {
             FileInputStream fileIn = new FileInputStream(ladattava.getAbsolutePath());
             ObjectInputStream in = new ObjectInputStream(fileIn);
             p = (Peli) in.readObject();
             in.close();
             fileIn.close();
-        } catch (IOException i) {
-//            i.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Tiedostoa " + ladattava.getAbsolutePath() +
-                    " ei löytynyt tai se on vahingoittunut!", "Tiedostovirhe",  WARNING_MESSAGE);
-            return null;
-        } catch (ClassNotFoundException c) {
-//            System.out.println("Peli-luokkaa ei löytynyt");
-//            c.printStackTrace();
-            return null;
-        } 
         return p;
     }
 }

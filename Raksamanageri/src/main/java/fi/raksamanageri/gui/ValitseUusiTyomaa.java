@@ -3,6 +3,10 @@ package fi.raksamanageri.gui;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyomaa;
 
+/**
+ * Graafinen käyttöliittymä uuden työmaan valitsemiseksi
+ */
+
 public class ValitseUusiTyomaa extends javax.swing.JFrame {
     
     private Peli peli;
@@ -10,6 +14,12 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
     private int tyomaaIndeksi;
     private Tyomaa valittuTyomaa;
 
+    /**
+     * Muuttujien alustaminen
+     * 
+     * @param p Peli
+     * @param v Päävalikko
+     */
     public ValitseUusiTyomaa(Peli p, Paavalikko v) {
         this.peli = p;
         this.valikko = v;
@@ -23,6 +33,9 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Alustaa näytön tiedot kun työmaita ei ole saatavilla
+     */
     private void alustaTyhjaTyomaa() {
         this.label_tyomaanJarjestysNumero.setText("Ei uusia työmaita...");
         this.label_tyomaanJarjestysNumero.setForeground(new java.awt.Color(255, 0, 0));
@@ -34,6 +47,11 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
         this.button_valitseTyomaa.setEnabled(false);
     }
     
+    /**
+     * Alustaa työmaan tiedot näytölle
+     * 
+     * @param indeksi Pelin vaipaiden työmaiden ArrayList-indeksi 
+     */
     private void alustaTyomaa(int indeksi) {
         // valitaan ensimmäinen työmaa
         this.valittuTyomaa = this.peli.getTyomaat().get(indeksi);
@@ -202,6 +220,9 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilota tämä ikkuna ja aseta Päävalikko näkyville
+     */
     private void button_valmisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valmisActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -210,16 +231,25 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
         this.valikko.setVisible(true);
     }//GEN-LAST:event_button_valmisActionPerformed
 
+    /**
+     * Näytä pelin seuraavan vapaan työmaan tiedot
+     */
     private void button_seuraavaTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(++this.tyomaaIndeksi);
     }//GEN-LAST:event_button_seuraavaTyomaaActionPerformed
 
+    /**
+     * Näytä pelin edellisen vapaan työmaan tiedot
+     */
     private void button_edellinenTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edellinenTyomaaActionPerformed
         // TODO add your handling code here:
         alustaTyomaa(--this.tyomaaIndeksi);
     }//GEN-LAST:event_button_edellinenTyomaaActionPerformed
 
+    /**
+     * Lisää näkyvillä oleva työmaa pelaajalle
+     */
     private void button_valitseTyomaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_valitseTyomaaActionPerformed
         // TODO add your handling code here:
         Tyomaa tm = this.peli.getTyomaat().get(this.tyomaaIndeksi);
@@ -240,41 +270,6 @@ public class ValitseUusiTyomaa extends javax.swing.JFrame {
             alustaTyomaa(--this.tyomaaIndeksi);
         }
     }//GEN-LAST:event_button_valitseTyomaaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HallitseTyomaita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HallitseTyomaita().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_edellinenTyomaa;

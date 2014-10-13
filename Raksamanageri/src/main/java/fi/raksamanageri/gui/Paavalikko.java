@@ -1,5 +1,6 @@
 package fi.raksamanageri.gui;
 
+import fi.raksamanageri.domain.App;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.tyokalut.Tiedostonkasittelija;
 import java.io.File;
@@ -9,10 +10,21 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
+/**
+ * Graafisen käyttöliittymän päävalikko
+ */
+
 public class Paavalikko extends javax.swing.JFrame {
     
     private Peli peli;
 
+    /**
+     * Paavalikon muuttujien alustaminen
+     * 
+     * @param peli, josta valikko alustetaan
+     * 
+     * @see fi.raksamanageri.domain.Peli
+     */
     public Paavalikko(Peli p) {
         this.peli = p;
         initComponents();
@@ -28,7 +40,9 @@ public class Paavalikko extends javax.swing.JFrame {
         
     }
     
-    // koe 
+    /**
+     * Päivitetään pelaajan tiedot päävalikkoon
+     */
     public void updatePaavalikko() {
         this.label_pelaajanRahat.setText("" + this.peli.getPelaaja().annaRahamaara());
         this.label_pelaajallaTyontekijoita.setText("" + this.peli.getPelaaja().annaTyontekijat().size());
@@ -207,11 +221,19 @@ public class Paavalikko extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Lopeta peli
+     */
     private void button_lopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lopetaActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_button_lopetaActionPerformed
 
+    /**
+     * Avataan uusi ikkuna josta hallitaan työntekijöitä. Työntekijöiden
+     * hallintaikkuna avataan samaan kohtaan kuin tämä ikkuna. Tämä ikkuna
+     * piilotetaan.
+     */
     private void button_hallitseTyontekijoitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_hallitseTyontekijoitaActionPerformed
         // TODO add your handling code here:
         HallitseTyontekijoita ht = new HallitseTyontekijoita(this.peli, this);
@@ -220,6 +242,10 @@ public class Paavalikko extends javax.swing.JFrame {
         ht.setVisible(true);
     }//GEN-LAST:event_button_hallitseTyontekijoitaActionPerformed
 
+    /**
+     * Avataan uusi ikkuna josta hallitaan työmaita. Työmaiden hallintaikkuna
+     * avataan samaan kohtaan missä tämä ikkuna on. Tämä ikkuna piilotetaan.
+     */
     private void button_hallitseTyomaitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_hallitseTyomaitaActionPerformed
         // TODO add your handling code here:
         HallitseTyomaita htm = new HallitseTyomaita(this.peli, this);
@@ -228,6 +254,10 @@ public class Paavalikko extends javax.swing.JFrame {
         htm.setVisible(true);
     }//GEN-LAST:event_button_hallitseTyomaitaActionPerformed
 
+    /**
+     * Avataan uusi ikkuna samaan kohtaan jossa tämä ikkuna on. Uudessa ikkunassa
+     * palkataan työntekijöitä. Tämä ikkuna piilotetaan.
+     */
     private void button_palkkaaTyontekijoitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_palkkaaTyontekijoitaActionPerformed
         // TODO add your handling code here:
         PalkkaaTyontekijoita pte = new PalkkaaTyontekijoita(this.peli, this);
@@ -236,6 +266,10 @@ public class Paavalikko extends javax.swing.JFrame {
         pte.setVisible(true);
     }//GEN-LAST:event_button_palkkaaTyontekijoitaActionPerformed
 
+    /**
+     * Avataan uusi ikkuna työmaiden etsimiseen. Tämä ikkuna piilotetaan. Uusien
+     * työmaiden etsimisen ikkuna sijoitetaan samaan kohtaan kuin tämä.
+     */
     private void button_etsiTyomaitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_etsiTyomaitaActionPerformed
         // TODO add your handling code here:
         ValitseUusiTyomaa vtm = new ValitseUusiTyomaa(this.peli, this);
@@ -244,18 +278,18 @@ public class Paavalikko extends javax.swing.JFrame {
         vtm.setVisible(true);
     }//GEN-LAST:event_button_etsiTyomaitaActionPerformed
 
+    /**
+     * Kutsutaan pelin seuraavaVuoro()-metodia ja päivitetään tiedot tähän ikkunaan
+     */
     private void button_seuraavaVuoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seuraavaVuoroActionPerformed
         // viestit sisältää rakennustarkastajan ja verottajan viestit
         // jostka tulostetaan JOptionPane:lla
-        
         ArrayList<String> viestit = this.peli.seuraavaVuoro();
-        
         if (!viestit.isEmpty()) {
             for (String s : viestit) {
                 JOptionPane.showMessageDialog(null, s.toString(),
                         "Hups", WARNING_MESSAGE);
             }
-            
         }
         
         updatePaavalikko();
@@ -264,14 +298,18 @@ public class Paavalikko extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Saavutit tavoitteesi 1000000",
                             "Voitto", INFORMATION_MESSAGE);
             this.setVisible(false);
-            Aloitus.main(null);
+            App.main(null);
         } else if (this.peli.onkoHavittu()) {
             JOptionPane.showMessageDialog(null, "Olet vararikossa!", "Häviö", INFORMATION_MESSAGE);
             this.setVisible(false);
-            Aloitus.main(null);
+            App.main(null);
         }
     }//GEN-LAST:event_button_seuraavaVuoroActionPerformed
 
+    /**
+     * Avataan JFileChooser jolla pelaaja voi tallentaa pelin. Tämän jälkeen
+     * peli lopetetaan
+     */
     private void button_tallennaJaLopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tallennaJaLopetaActionPerformed
         // TODO add your handling code here:
         Tiedostonkasittelija k = new Tiedostonkasittelija();

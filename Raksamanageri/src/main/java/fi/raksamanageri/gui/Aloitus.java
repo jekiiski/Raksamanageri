@@ -5,9 +5,19 @@ import fi.raksamanageri.tyokalut.Tiedostonkasittelija;
 import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+
+/**
+ * Pelin aloitusikkuna. Pelaajalla on mahdollisuus aloittaa uusi peli,
+ * ladata tallennettu peli tai poistua ohjelmasta
+ */
 
 public class Aloitus extends javax.swing.JFrame {
 
+    /**
+     * Ikkunan komponenttien alustus
+     */
     public Aloitus() {
         initComponents();
     }
@@ -93,6 +103,11 @@ public class Aloitus extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Piilottaa aloitus-ikkunan ja alustaa uuden pelin. Alustuksen jälkeen
+     * uusi päävalikko asetetaan näkyville samaan kohtaan, jossa aloitus-
+     * ikkuna sijaitsi
+     */
     private void button_uusiPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_uusiPeliActionPerformed
         this.setVisible(false);
         Peli uusiPeli = new Peli();
@@ -102,22 +117,27 @@ public class Aloitus extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_button_uusiPeliActionPerformed
 
+    /**
+     * Käynnistää JFileChooser-komponentin ja yrittää ladata pelaajan
+     * osoittaman tiedoston peli-luokaksi. Mikäli tiedosto ei ole yhteen-
+     * sopiva tämän version kanssa, se on vahingoittunut tai tiedosto ei
+     * ole tämän ohjelman tekemä tallennustiedosto annettaan ilmoitus
+     * lataamisen epäonnistumisesta
+     */
     private void button_lataaPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lataaPeliActionPerformed
-        // TODO add your handling code here:
         Tiedostonkasittelija k = new Tiedostonkasittelija();
-
         JFileChooser lataaja = new JFileChooser();
         int paluuArvo = lataaja.showDialog(this, "Lataa");
-
+        File file = null;
         Peli peli = null;
 
         if (paluuArvo == JFileChooser.APPROVE_OPTION) {
-            File file = lataaja.getSelectedFile();
+            file = lataaja.getSelectedFile();
             try {
                 peli = k.lataaPeli(file);
             } catch (Exception e) {
-                // Tiedostonkäsittelijä käy läpi virheet
-                // tänne ehkä throws exception? koska try/catch tarpeeton
+                JOptionPane.showMessageDialog(null, "Tiedostoa " + file.getAbsolutePath() +
+                    " ei löytynyt tai se on vahingoittunut!", "Tiedostovirhe",  WARNING_MESSAGE);
             }
         }
 
@@ -128,45 +148,47 @@ public class Aloitus extends javax.swing.JFrame {
             p.setLocation(this.getLocation().x, this.getLocation().y);
             p.setVisible(true);
         }
-
-
     }//GEN-LAST:event_button_lataaPeliActionPerformed
 
+    /**
+     * Lopettaa pelin
+     */
     private void button_lopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_lopetaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_button_lopetaActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Aloitus().setVisible(true);
-            }
-        });
-    }
+    
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Aloitus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Aloitus().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_lataaPeli;
