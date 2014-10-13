@@ -1,7 +1,7 @@
 package fi.raksamanageri.domain;
 
 import fi.raksamanageri.domain.Tyomaa;
-import fi.raksamanageri.domain.Patevyys;
+//import fi.raksamanageri.domain.Patevyys;
 import fi.raksamanageri.domain.Tyontekija;
 import java.util.ArrayList;
 import org.junit.Before;

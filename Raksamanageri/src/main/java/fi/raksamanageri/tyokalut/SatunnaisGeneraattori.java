@@ -30,7 +30,7 @@ public class SatunnaisGeneraattori implements java.io.Serializable {
      * @return Luotu työmaa 
      */
     public Tyomaa generoiUusiTyomaa() {
-        int laajuus = 40 + + this.tyomaaLaskuri + this.random.nextInt(20);
+        int laajuus = 40 + this.random.nextInt(20+this.tyomaaLaskuri);
         String nimi = "TM" + this.tyomaaLaskuri;
         this.tyomaaLaskuri++;
         Tyomaa t = new Tyomaa(laajuus, nimi);

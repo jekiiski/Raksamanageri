@@ -1,6 +1,5 @@
 package fi.raksamanageri.gui;
 
-import fi.raksamanageri.domain.Patevyys;
 import fi.raksamanageri.domain.Peli;
 import fi.raksamanageri.domain.Tyontekija;
 
