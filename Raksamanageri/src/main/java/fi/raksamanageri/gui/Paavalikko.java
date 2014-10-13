@@ -32,7 +32,11 @@ public class Paavalikko extends javax.swing.JFrame {
         this.label_pelaajallaTyontekijoita.setText("" + this.peli.getPelaaja().annaTyontekijat().size());
         this.label_pelaajanTyomaidenMaara.setText("" + this.peli.getPelaaja().annaTyomaat().size());
         
-        // debug
+        // poistetaan edelliset työntekijät ja työmaat
+        this.peli.getTyomaat().clear();
+        this.peli.getVapaatTyontekijat().clear();
+        
+        // arvotaan uudet työntekijät ja työmaat
         for (int i=0; i<3; i++) {
             this.peli.arvoUusiTyontekija();
             this.peli.arvoUusiTyomaa();

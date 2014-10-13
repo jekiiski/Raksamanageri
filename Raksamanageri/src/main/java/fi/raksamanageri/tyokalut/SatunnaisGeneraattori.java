@@ -25,12 +25,12 @@ public class SatunnaisGeneraattori implements java.io.Serializable {
     }
     
     /**
-     * Luo uuden työmaan, jonka laajuus on 40...59
+     * Luo uuden työmaan, laajuus arvotaan ja se kasvaa pelin edetessä
      * 
      * @return Luotu työmaa 
      */
     public Tyomaa generoiUusiTyomaa() {
-        int laajuus = 40 + this.random.nextInt(20);
+        int laajuus = 40 + + this.tyomaaLaskuri + this.random.nextInt(20);
         String nimi = "TM" + this.tyomaaLaskuri;
         this.tyomaaLaskuri++;
         Tyomaa t = new Tyomaa(laajuus, nimi);
