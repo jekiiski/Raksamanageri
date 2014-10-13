@@ -65,7 +65,7 @@ public class Aloitus extends javax.swing.JFrame {
         });
 
         label_pelinNimiJaVersio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_pelinNimiJaVersio.setText("Raksamanageri v.0.1");
+        label_pelinNimiJaVersio.setText("Raksamanageri v.1.0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

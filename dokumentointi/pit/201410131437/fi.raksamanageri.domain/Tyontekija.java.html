@@ -1,0 +1,1822 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>Tyontekija.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_1'></a>
+</td>
+<td class=''><pre><span  class=''>package fi.raksamanageri.domain;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_2'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_3'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_4'></a>
+</td>
+<td class=''><pre><span  class=''> * Luokka kuvaa ty&#195;&#182;maalla ty&#195;&#182;skentelev&#195;&#164;&#195;&#164; ty&#195;&#182;ntekij&#195;&#164;&#195;&#164;, jonka palkan maksaa pelaaja</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_5'></a>
+</td>
+<td class=''><pre><span  class=''> * @author eikkari</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_6'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_7'></a>
+</td>
+<td class=''><pre><span  class=''>public class Tyontekija implements java.io.Serializable {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_8'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_9'></a>
+</td>
+<td class=''><pre><span  class=''>    private int palkka;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_10'></a>
+</td>
+<td class=''><pre><span  class=''>    private final boolean kotimainen;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_11'></a>
+</td>
+<td class=''><pre><span  class=''>    private int tyoteho;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_12'></a>
+</td>
+<td class=''><pre><span  class=''>    private Tyomaa tyoMaa;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_13'></a>
+</td>
+<td class=''><pre><span  class=''>    private String nimi;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_14'></a>
+</td>
+<td class='covered'><pre><span  class=''>    private static int KOTIMAINEN_PALKKA = 400;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_15'></a>
+</td>
+<td class='covered'><pre><span  class=''>    private static int ULKOMAINEN_PALKKA = 300;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_16'></a>
+</td>
+<td class='covered'><pre><span  class=''>    private static int KOTIMAINEN_TYOTEHO = 10;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_17'></a>
+</td>
+<td class='covered'><pre><span  class=''>    private static int ULKOMAINEN_TYOTEHO = 11;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_18'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_19'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_20'></a>
+</td>
+<td class=''><pre><span  class=''>     * Konstruktorissa m&#195;&#164;&#195;&#164;ritell&#195;&#164;&#195;&#164;n ty&#195;&#182;ntekij&#195;&#164;. Kotimainen on tehokkaampi ja kalliimpi, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_21'></a>
+</td>
+<td class=''><pre><span  class=''>     * mutta ulkomainen kiert&#195;&#164;&#195;&#164; veroja ja her&#195;&#164;tt&#195;&#164;&#195;&#164; rakennustarkastajan huomion.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_22'/>
+22
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_22'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_23'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param onkoKotimainen true jos kotimainen</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_24'/>
+24
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_24'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param nimi ty&#195;&#182;ntekij&#195;&#164;n nimi</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_25'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_26'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Tyontekija(boolean onkoKotimainen, String nimi) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_27'/>
+27
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_27'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.kotimainen = onkoKotimainen;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_28'/>
+28
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_28'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.tyoMaa = null;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_29'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.nimi = nimi;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_30'/>
+30
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_30'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_31'/>
+31
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_31'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (onkoKotimainen) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_32'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.palkka = KOTIMAINEN_PALKKA;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_33'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.tyoteho = KOTIMAINEN_TYOTEHO;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_34'/>
+34
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_34'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_35'/>
+35
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_35'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.palkka = ULKOMAINEN_PALKKA;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_36'/>
+36
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_36'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.tyoteho = ULKOMAINEN_TYOTEHO;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_37'/>
+37
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_37'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_38'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_39'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_40'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_41'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa ty&#195;&#182;ntekij&#195;&#164;n vaatiman palkan</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_42'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return palkka</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_43'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_44'/>
+44
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_44'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getPalkka() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_45'/>
+45
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_45'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.palkka;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_46'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_47'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_48'/>
+48
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_48'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_49'/>
+49
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_49'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodilla voidaan asettaa ty&#195;&#182;ntekij&#195;&#164;lle uusi palkka</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_50'/>
+50
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_50'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_51'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param maara uusi palkka</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_52'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_53'/>
+53
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_53'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setPalkka(int maara) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_54'/>
+54
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_54'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (maara &#62; 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_55'/>
+55
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_55'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.palkka = maara;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_56'/>
+56
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_56'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_57'/>
+57
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_57'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_58'/>
+58
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_58'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_59'/>
+59
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_59'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_60'/>
+60
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_60'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa ty&#195;&#182;ntekij&#195;&#164;n ty&#195;&#182;tehon</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_61'/>
+61
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_61'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_62'/>
+62
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_62'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return ty&#195;&#182;teho</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_63'/>
+63
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_63'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_64'/>
+64
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_64'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getTyoteho() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_65'/>
+65
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_65'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.tyoteho;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_66'/>
+66
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_66'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_67'/>
+67
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_67'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_68'/>
+68
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_68'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_69'/>
+69
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_69'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodilla voidaan muuttaa ty&#195;&#182;ntekij&#195;&#164;n ty&#195;&#182;tehoa</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_70'/>
+70
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_70'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_71'/>
+71
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_71'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param tyoteho uusi ty&#195;&#182;teho </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_72'/>
+72
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_72'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_73'/>
+73
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_73'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setTyoTeho(int tyoteho) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_74'/>
+74
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_74'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (tyoteho &#62; 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_75'/>
+75
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_75'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.tyoteho = tyoteho;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_76'/>
+76
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_76'></a>
+</td>
+<td class=''><pre><span  class=''>        } </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_77'/>
+77
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_77'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_78'/>
+78
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_78'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_79'/>
+79
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_79'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_80'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa true, mik&#195;&#164;li kyseess&#195;&#164; on kotimainen ty&#195;&#182;ntekij&#195;&#164;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_81'/>
+81
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_81'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_82'/>
+82
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_82'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return true jos kotimainen</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_83'/>
+83
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_83'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_84'></a>
+</td>
+<td class=''><pre><span  class=''>    public boolean onkoKotimainen() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_85'/>
+85
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_85'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.kotimainen;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_86'/>
+86
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_86'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_87'/>
+87
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_87'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_88'/>
+88
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_88'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_89'/>
+89
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_89'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodilla ty&#195;&#182;ntekij&#195;&#164; voidaan laittaa t&#195;&#182;ihin ty&#195;&#182;maalle.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_90'/>
+90
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_90'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_91'/>
+91
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_91'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param maa ty&#195;&#182;maa, jonne ty&#195;&#182;ntekij&#195;&#164; menee t&#195;&#182;ihin</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_92'/>
+92
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_92'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_93'/>
+93
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_93'></a>
+</td>
+<td class=''><pre><span  class=''>    public void laitaToihin(Tyomaa maa) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_94'/>
+94
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_94'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.tyoMaa = maa;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_95'/>
+95
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_95'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_96'/>
+96
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_96'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_97'/>
+97
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_97'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_98'/>
+98
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_98'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodilla ty&#195;&#182;ntekij&#195;&#164; poistetaan ty&#195;&#182;maalta. Ty&#195;&#182;ntekij&#195;&#164; on vapaalla.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_99'/>
+99
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_99'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_100'/>
+100
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_100'></a>
+</td>
+<td class=''><pre><span  class=''>    public void poistaTyomaalta() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_101'/>
+101
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_101'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.tyoMaa = null;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_102'/>
+102
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_102'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_103'/>
+103
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_103'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_104'/>
+104
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_104'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_105'/>
+105
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_105'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa ty&#195;&#182;maan, jossa ty&#195;&#182;ntekij&#195;&#164; on t&#195;&#182;iss&#195;&#164;. Mik&#195;&#164;li ty&#195;&#182;ntekij&#195;&#164;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_106'/>
+106
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_106'></a>
+</td>
+<td class=''><pre><span  class=''>     * ei ole t&#195;&#182;iss&#195;&#164; palauttaa metodi null.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_107'/>
+107
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_107'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_108'/>
+108
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_108'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return ty&#195;&#182;maa miss&#195;&#164; t&#195;&#182;iss&#195;&#164; </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_109'/>
+109
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_109'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_110'/>
+110
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_110'></a>
+</td>
+<td class=''><pre><span  class=''>    public Tyomaa missaToissa() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_111'/>
+111
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_111'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.tyoMaa;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_112'/>
+112
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_112'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_113'/>
+113
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_113'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_114'/>
+114
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_114'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_115'/>
+115
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_115'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa pelaajan nimen.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_116'/>
+116
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_116'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_117'/>
+117
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_117'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return nimi</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_118'/>
+118
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_118'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_119'/>
+119
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_119'></a>
+</td>
+<td class=''><pre><span  class=''>    public String getNimi() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_120'/>
+120
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_120'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.nimi;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_121'/>
+121
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_121'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_122'/>
+122
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_122'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_123'/>
+123
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_123'></a>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_124'/>
+124
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_124'></a>
+</td>
+<td class=''><pre><span  class=''>    public String toString() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_125'/>
+125
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_125'></a>
+</td>
+<td class='covered'><pre><span  class=''>        String koti = &#34;&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_126'/>
+126
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_126'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (this.onkoKotimainen()) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_127'/>
+127
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_127'></a>
+</td>
+<td class='covered'><pre><span  class=''>            koti = &#34;Kotimainen&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_128'/>
+128
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_128'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_129'/>
+129
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_129'></a>
+</td>
+<td class='covered'><pre><span  class=''>            koti = &#34;Ulkomainen&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_130'/>
+130
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_130'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_131'/>
+131
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_131'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return koti + &#34; ty&#195;&#182;ntekij&#195;&#164;, palkka: &#34; + this.palkka</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_132'/>
+132
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_132'></a>
+</td>
+<td class=''><pre><span  class=''>                + &#34;, ty&#195;&#182;teho: &#34; + this.tyoteho;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_133'/>
+133
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_133'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_134'/>
+134
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_134'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@59b80684_135'/>
+135
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_135'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_31'>31</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_31'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaKonstruktorissaOikeaPalkka(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_45'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaKonstruktorissaOikeaPalkka(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_54'>54</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_54'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> fi.raksamanageri.domain.TyontekijaTest.palkkaEiVoiOllaNolla(fi.raksamanageri.domain.TyontekijaTest)</p> <p class='KILLED'>negated conditional : KILLED -> fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaOikeaPalkkaMuutettaessa(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_65'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaKonstruktorissaOikeaTyoteho(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_74'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> fi.raksamanageri.domain.TyontekijaTest.tyotehoEiVoiOllaNolla(fi.raksamanageri.domain.TyontekijaTest)</p> <p class='KILLED'>negated conditional : KILLED -> fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaOikeaTyotehoMuutettaessa(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_85'>85</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_85'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.toStringMetodiToimiiHalutustiKotimaisella(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_111'>111</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_111'/> 
+
+<p class='KILLED'>mutated return of Object value for fi/raksamanageri/domain/Tyontekija::missaToissa to ( if (x != null) null else throw new RuntimeException ) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.tyontekijaTietaaMissaOnToissa(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_120'>120</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_120'/> 
+
+<p class='KILLED'>mutated return of Object value for fi/raksamanageri/domain/Tyontekija::getNimi to ( if (x != null) null else throw new RuntimeException ) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.nimiOnOikein(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_126'>126</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_126'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> fi.raksamanageri.domain.TyontekijaTest.toStringMetodiToimiiHalutustiKotimaisella(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@59b80684_131'>131</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@59b80684_131'/> 
+
+<p class='KILLED'>mutated return of Object value for fi/raksamanageri/domain/Tyontekija::toString to ( if (x != null) null else throw new RuntimeException ) : KILLED -> fi.raksamanageri.domain.TyontekijaTest.toStringMetodiToimiiHalutustiKotimaisella(fi.raksamanageri.domain.TyontekijaTest)</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>fi.raksamanageri.domain.PeliTest.uusiaTyontekijoitaEiLuodaJosTarpeeksi(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.lisaaTyontekijaTyomaalleLaitaToihinMetodi(fi.raksamanageri.domain.PelaajaTest) (12 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.tyontekijaTietaaMissaOnToissa(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.tyokalut.SatunnaisGeneraattoriTest.fi.raksamanageri.tyokalut.SatunnaisGeneraattoriTest (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.oikeanTyontekijanPoistoToimii(fi.raksamanageri.domain.PelaajaTest) (4 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaKonstruktorissaOikeaPalkka(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.olematontaTyontekijaEiVoiPoistaa(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyomaaPoistuuKunValmista(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.nimiOnOikein(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaOikeaPalkkaMuutettaessa(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.palkkaEiVoiOllaNegatiivinen(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PeliTest.uudenTyontekijanLisaysToimii(fi.raksamanageri.domain.PeliTest) (1 ms)</li><li>fi.raksamanageri.domain.PeliTest.uudenTyontekijanArpominenToimii(fi.raksamanageri.domain.PeliTest) (1 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijaPoistoTyomaaltaToimii(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijanPoistoToimii(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PeliTest.onkoVoitettuToimii(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.toStringMetodiToimiiHalutustiKotimaisella(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijaPoistoTyomaaltaToimiiKaksi(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.tyontekijanLisaysKasvattaaKokonaistehokkuuttaUlkomainen(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.PeliTest.uusiaTyomaitaTehdaan(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.palkatLasketaanOikeinKunTyontekijoita(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PeliTest.onkoVoitettuToimiiKaksi(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.ulkomainenTyotekijaOikeaPalkkaMuutettaessa(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijanLisaysToimii(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PeliTest.uusiaTyomaitaEiTehdaJosNiitaOnTarpeeksi(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.kaytettyKotimaistaToimiiKaksi(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.tyontekijaPoistoLaskeeKokonaistehokkuutta(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaKonstruktorissaOikeaTyoteho(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyomaatPaivittyvatOikein(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PeliTest.onkoHavittyToimiiKaksi(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.kotimainenTyontekijaOikeaTyotehoMuutettaessa(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijaLisaysTyomaalleToimii(fi.raksamanageri.domain.PelaajaTest) (4 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.tyontekijanLisaysKasvattaaKokonaistehokkuutta(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.ulkomainenTyontekijaOikeaTyotehoMuutettaessa(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.tyontekijaOnToissaTyomaalla(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.palkkaEiVoiOllaNolla(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.ulkomainenTyontekijaKonstruktorissaOikeaTyoteho(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.tyotehoEiVoiOllaNegatiivinen(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.pelaajaSaaRahaaKunTyomaaValmis(fi.raksamanageri.domain.PelaajaTest) (4 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.tyontekijanPoistoTyomaaltaToimiiOikeinTyontekijalla(fi.raksamanageri.domain.TyomaaTest) (3 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijanPoistoToimiiOikeallaSyotteella(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijanLisaysTyomaalleToimiiKaksi(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.toStringMetodiToimiiHalutustiUlkomaisella(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.PeliTest.tyontekijanPoistoToimii(fi.raksamanageri.domain.PeliTest) (1 ms)</li><li>fi.raksamanageri.domain.PeliTest.onkoHavittyToimii(fi.raksamanageri.domain.PeliTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.tyotehoEiVoiOllaNolla(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyontekijaTest.ulkomoinenTyontekijaKonstruktorissaOikeaPalkka(fi.raksamanageri.domain.TyontekijaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.kaytettyKotimaistaToimiiYksi(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.TyomaaTest.seuraavaVuoroLisaaValmistaTyota(fi.raksamanageri.domain.TyomaaTest) (2 ms)</li><li>fi.raksamanageri.domain.PelaajaTest.tyontekijatPoistuvatTyomaaltaKunValmista(fi.raksamanageri.domain.PelaajaTest) (3 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
