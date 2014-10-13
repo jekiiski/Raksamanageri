@@ -67,7 +67,7 @@ public class TyomaaTest {
     public void tyontekijanLisaysKasvattaaKokonaistehokkuuttaUlkomainen() {
         Tyontekija te = new Tyontekija(false, "");
         this.t.lisaaTyontekija(te);
-        assertEquals(this.t.getKokonaisTehokkuus(), 8);
+        assertEquals(this.t.getKokonaisTehokkuus(), 11);
     }
     
     @Test

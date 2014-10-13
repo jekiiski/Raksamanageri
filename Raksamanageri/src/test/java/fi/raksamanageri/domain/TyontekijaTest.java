@@ -63,7 +63,7 @@ public class TyontekijaTest {
     
     @Test
     public void ulkomainenTyontekijaKonstruktorissaOikeaTyoteho() {
-        assertEquals(this.ulko.getTyoteho(), 8);
+        assertEquals(this.ulko.getTyoteho(), 11);
     }
     
     @Test
@@ -87,7 +87,7 @@ public class TyontekijaTest {
     @Test
     public void tyotehoEiVoiOllaNolla() {
         this.ulko.setTyoTeho(0);
-        assertEquals(this.ulko.getTyoteho(), 8);
+        assertEquals(this.ulko.getTyoteho(), 11);
     }
     
 //    @Test
@@ -112,7 +112,7 @@ public class TyontekijaTest {
     
     @Test
     public void toStringMetodiToimiiHalutustiUlkomaisella() {
-        String s = "Ulkomainen työntekijä, palkka: 300, työteho: 8";
+        String s = "Ulkomainen työntekijä, palkka: 300, työteho: 11";
         assertEquals(this.ulko.toString(), s);
     }
     
