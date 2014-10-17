@@ -1,4 +1,4 @@
-** Käyttöohjeet
+** Käyttöohjeet **
 
 * Tarina
 Olet perinyt 10000 rahaa ja haluat perustaa rakennusyrityksen. Tavoitteenasi on saada rahamääräsi kasvamaan 1000000 rahaan.
